@@ -1,7 +1,6 @@
 import "@/globals.css";
 
 import { Inter } from "next/font/google";
-import { ClerkProvider } from "@clerk/nextjs";
 import { NuqsAdapter } from "nuqs/adapters/next/app";
 
 import Navbar from "@/components/navbar";
@@ -16,8 +15,8 @@ const inter = Inter({
 });
 
 export const metadata = {
-  title: "Create GELLIFY App",
-  description: "Bolierplate for GELLIFY App",
+  title: "Loop AI Group - La Piattaforma AI Agents Leader",
+  description: "Potenzia la tua forza lavoro costruendo i tuoi AI Agents enterprise che forniscono lavoro reale utilizzando qualsiasi ML/LLM, i tuoi sistemi legacy e la tua infrastruttura.",
   icons: [{ rel: "icon", url: "/favicon.ico" }],
 };
 
@@ -31,27 +30,25 @@ export default async function RootLayout({
   const { locale } = await params;
 
   return (
-    <ClerkProvider dynamic>
-      <html lang="en" suppressHydrationWarning>
-        <body className={`font-sans ${inter.variable}`}>
-          <TRPCReactProvider>
-            <I18nProviderClient locale={locale}>
-              <NuqsAdapter>
-                <ThemeProvider
-                  attribute="class"
-                  defaultTheme="system"
-                  enableSystem
-                  disableTransitionOnChange
-                >
-                  <Navbar />
-                  {children}
-                  <Toaster />
-                </ThemeProvider>
-              </NuqsAdapter>
-            </I18nProviderClient>
-          </TRPCReactProvider>
-        </body>
-      </html>
-    </ClerkProvider>
+    <html lang="en" suppressHydrationWarning>
+      <body className={`font-sans ${inter.variable}`}>
+        <TRPCReactProvider>
+          <I18nProviderClient locale={locale}>
+            <NuqsAdapter>
+              <ThemeProvider
+                attribute="class"
+                defaultTheme="system"
+                enableSystem
+                disableTransitionOnChange
+              >
+                <Navbar />
+                {children}
+                <Toaster />
+              </ThemeProvider>
+            </NuqsAdapter>
+          </I18nProviderClient>
+        </TRPCReactProvider>
+      </body>
+    </html>
   );
 }

@@ -1,5 +1,4 @@
 import { NextResponse } from "next/server";
-import { clerkMiddleware, createRouteMatcher } from "@clerk/nextjs/server";
 import { createI18nMiddleware } from "next-international/middleware";
 
 const I18nMiddleware = createI18nMiddleware({
@@ -8,16 +7,12 @@ const I18nMiddleware = createI18nMiddleware({
   urlMappingStrategy: "rewriteDefault",
 });
 
-const isProtectedRoute = createRouteMatcher(["/dashboard(.*)"]);
-
-export default clerkMiddleware(async (auth, req) => {
-  if (isProtectedRoute(req)) await auth.protect();
-
+export default function middleware(req: Request) {
   // avoid i18n middleware in /api routes
-  if (req.nextUrl.pathname.startsWith("/api")) return NextResponse.next();
+  if (req.url.includes("/api")) return NextResponse.next();
 
   return I18nMiddleware(req);
-});
+}
 
 export const config = {
   matcher: [

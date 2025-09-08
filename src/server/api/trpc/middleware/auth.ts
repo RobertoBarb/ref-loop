@@ -6,23 +6,16 @@ type TRPCContextType = Awaited<ReturnType<typeof createTRPCContext>>;
 
 /**
  * Middleware for authenticated procedure execution.
- *
- * You can remove this if you don't like it, but it can help catch unwanted waterfalls by simulating
- * network latency that would occur in production but not in local development.
+ * 
+ * DISABLED: Authentication is not required for this app
+ * This middleware is kept for future use if authentication is needed
  */
 export const authMiddleware = async <TReturn>(opts: {
   ctx: TRPCContextType;
   next: (opts: { ctx: Partial<TRPCContextType> }) => Promise<TReturn>;
 }) => {
-  const { session } = opts.ctx;
-
-  if (!session.userId) {
-    throw new TRPCError({ code: "UNAUTHORIZED" });
-  }
-
+  // Skip authentication for now
   return opts.next({
-    ctx: {
-      session,
-    },
+    ctx: opts.ctx,
   });
 };

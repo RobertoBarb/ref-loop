@@ -1,10 +1,10 @@
-import { createTRPCRouter, protectedProcedure } from "../init";
+import { createTRPCRouter, publicProcedure } from "../init";
 
 export const dashboardRouter = createTRPCRouter({
-  privateData: protectedProcedure.query(({ ctx }) => {
+  privateData: publicProcedure.query(({ ctx }) => {
     return {
-      message: "This is private",
-      userId: ctx.session.userId,
+      message: "This is public data (no authentication required)",
+      userId: "anonymous",
     };
   }),
 });

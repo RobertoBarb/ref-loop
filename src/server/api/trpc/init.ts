@@ -7,12 +7,11 @@
  * need to use are documented accordingly near the end.
  */
 import { cache } from "react";
-import { auth } from "@clerk/nextjs/server";
 import { initTRPC } from "@trpc/server";
 import superjson from "superjson";
 import { ZodError } from "zod/v4";
 
-import { db } from "../../db";
+// import { db } from "../../db"; // Commentato per ora - DB non necessario
 import { authMiddleware } from "./middleware/auth";
 import { timingMiddleware } from "./middleware/timing";
 
@@ -29,10 +28,8 @@ import { timingMiddleware } from "./middleware/timing";
  * @see https://trpc.io/docs/server/context
  */
 export const createTRPCContext = cache(async (opts: { headers: Headers }) => {
-  const session = await auth();
   return {
-    db,
-    session,
+    // db, // Commentato per ora - DB non necessario
     ...opts,
   };
 });

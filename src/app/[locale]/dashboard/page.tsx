@@ -7,7 +7,7 @@ export default async function DashboardPage() {
     <div>
       <h1>Dashboard</h1>
       <p>Welcome {privateData.userId}</p>
-      <p>privateData: {privateData.message}</p>
+      <p>Data: {privateData.message}</p>
     </div>
   );
 }

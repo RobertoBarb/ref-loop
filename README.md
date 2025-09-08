@@ -39,55 +39,23 @@ curl -fsSL https://bun.sh/install | bash
 
 ### Database
 
-GELLIFY app will come with a `start-localstack.sh` bash script that can create a docker container with a database for local development.
-If you already have a database, feel free to delete this file and put your database credentials in `.env`.
+**This app has been configured to work WITHOUT a database.** All database connections have been disabled.
 
-```sh
-./start-localstack.sh
-```
+If you want to add a database in the future, you can:
+- Uncomment the database-related code in the configuration files
+- Use the provided `start-localstack.sh` script for local development
+- Set up a remote database (Neon, Supabase, etc.) and add the `DATABASE_URL` to your `.env` file
 
-The `.env` file in your project directory already contains a valid DB url for local development via Docker.
-Your app is already configured to talk to Neon and has a local Postgres via Docker for local development, we get you started. No initial setup on your part is needed.
-
-Sooner or later you will have to create a remote instance to deploy to. Here the basic steps:
-
-1. If you're already signed up or coming to Neon from Azure, you can skip ahead to Step 2.<br />
-   If you haven't signed up yet, you can sign up for free here: [Create a Neon Account↗](https://console.neon.tech/signup)
-
-2. Create a Neon project and get the necessary `DATABASE_URL`
-
-Once everything is completed you can update the `.env` with Clerk variables to point to your remote DB instance.
-
-```
-DATABASE_URL=***
-```
+The database setup has been preserved in the codebase but commented out for easy re-enabling when needed.
 
 ### Authentication
 
-Your app includes Clerk, we get you started. This is one of the simplest providers, but it still requires a bit of initial setup on your part.
-Of course, if you prefer to use a different auth provider, you can also opt-out of Clerk and use something link [NextAuth.js](https://next-auth.js.org/) instead.
+**This app has been configured to work WITHOUT authentication.** All routes are publicly accessible.
 
-You will need to:
-
-1. Sign into Clerk
-   [Create a Clerk account↗](https://dashboard.clerk.com/sign-up) or [sign into the Clerk Dashboard↗](https://dashboard.clerk.com/).
-
-2. Create a Clerk application
-   If you've just created an account for the first time, you'll be taken directly to the interactive authentication setup form.
-   Otherwise, you'll be redirected to the [Clerk Dashboard↗](https://dashboard.clerk.com/). To create a new app, select the **Create application** card.
-   You'll be redirected to the interactive authentication setup form.
-
-3. Select identifiers and social providers
-   Once you are in the interactive authentication setup form, you will be asked to build your authentication flow.
-   Here, Clerk provides various options for setting up your sign-up and sign-in flows. You can choose to use email, phone, or username as [identifiers](https://clerk.com/docs/authentication/configuration/sign-up-sign-in-options#identifiers), and you can enable [social authentication providers](https://clerk.com/docs/authentication/social-connections/overview).
-   Once the application is created, you can also customize your authentication flow by selecting different authentication strategies, verification methods, and more. [Learn more about sign-up and sign-in options](https://clerk.com/docs/authentication/configuration/sign-up-sign-in-options).
-
-Once everything is completed update the `.env` with Clerk variables
-
-```
-NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY=pk_test_***
-CLERK_SECRET_KEY=sk_test_***
-```
+If you want to add authentication in the future, you can:
+- Use [NextAuth.js](https://next-auth.js.org/) 
+- Re-enable Clerk by adding back the dependencies and configuration
+- Use any other authentication provider of your choice
 
 ## Editor Setup
 
@@ -104,5 +72,10 @@ Have a look around the [docs↗](https://gellify.dev), as well as the docs of th
 
 ## Notes 2025-02-12
 
-- [ ] fix clerk element login
-- [ ] fix rest api auth middleware
+- [x] Removed Clerk authentication - app now works without authentication
+- [x] Updated all middleware and API routes to work without auth
+- [x] Removed sign-in/sign-up pages
+- [x] Updated navbar to remove user menu
+- [x] Disabled database connections - app now works without database
+- [x] Updated environment validation to not require DATABASE_URL
+- [x] Commented out all database-related code for easy re-enabling

@@ -7,12 +7,10 @@ export const env = createEnv({
    * isn't built with invalid env vars.
    */
   server: {
-    DATABASE_URL: z.string().min(1, "url is required"),
+    // DATABASE_URL: z.string().min(1, "url is required"), // Commentato per ora - DB non necessario
     NODE_ENV: z
       .enum(["development", "test", "production"])
       .default("development"),
-
-    CLERK_SECRET_KEY: z.string().min(1),
   },
 
   /**
@@ -21,7 +19,7 @@ export const env = createEnv({
    * `NEXT_PUBLIC_`.
    */
   client: {
-    NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY: z.string().min(1),
+    // Nessuna variabile client necessaria per ora
   },
 
   /**
@@ -29,11 +27,8 @@ export const env = createEnv({
    * middlewares) or client-side so we need to destruct manually.
    */
   runtimeEnv: {
-    DATABASE_URL: process.env.DATABASE_URL,
+    // DATABASE_URL: process.env.DATABASE_URL, // Commentato per ora - DB non necessario
     NODE_ENV: process.env.NODE_ENV,
-    CLERK_SECRET_KEY: process.env.CLERK_SECRET_KEY,
-    NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY:
-      process.env.NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY,
   },
   /**
    * Run `build` or `dev` with `SKIP_ENV_VALIDATION` to skip env validation. This is especially

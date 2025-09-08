@@ -1,13 +1,14 @@
 import type { MiddlewareHandler } from "hono";
 
-import { db } from "@/server/db";
+// import { db } from "@/server/db"; // Commentato per ora - DB non necessario
 
 /**
- * Database middleware that connects to the database and sets it on context
+ * Database middleware - DISABLED for this app
+ * Database connection is not required, but this middleware is kept for future use
  */
 export const withDatabase: MiddlewareHandler = async (c, next) => {
-  // Set database on context
-  c.set("db", db);
+  // Skip database connection for now
+  // c.set("db", db);
 
   await next();
 };

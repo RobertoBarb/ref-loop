@@ -1,9 +1,8 @@
 import Link from "next/link";
-import { HomeIcon, LayersIcon } from "lucide-react";
+import { Bot, Brain, Cloud, HomeIcon, LayersIcon, Sparkles } from "lucide-react";
 
 import Logo from "@/components/navbar-components/logo";
 import ThemeToggle from "@/components/navbar-components/theme-toggle";
-import UserMenu from "@/components/navbar-components/user-menu";
 import { Button } from "@/components/ui/button";
 import {
   NavigationMenu,
@@ -20,7 +19,8 @@ import LanguageSelector from "./navbar-components/language-selector";
 
 // Navigation links with icons for desktop icon-only navigation
 const navigationLinks = [
-  { href: "/dashboard", label: "Dashboard", icon: HomeIcon, active: true },
+  { href: "/", label: "Home", icon: HomeIcon, active: true },
+  { href: "/dashboard", label: "Dashboard", icon: Bot },
   { href: "/todo", label: "Todo", icon: LayersIcon },
 ];
 
@@ -120,8 +120,6 @@ export default function Navbar() {
           <ThemeToggle />
           {/* Language selector */}
           <LanguageSelector />
-          {/* User menu */}
-          <UserMenu />
         </div>
       </div>
     </header>
