@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { Bot, Brain, Cloud, HomeIcon, LayersIcon, Sparkles } from "lucide-react";
+import { Bot, Brain, Cloud, HomeIcon, LayersIcon, Sparkles, Users, Building, Award, Play, BarChart3, FileText, Video, Mail, Calendar } from "lucide-react";
 
 import Logo from "@/components/navbar-components/logo";
 import ThemeToggle from "@/components/navbar-components/theme-toggle";
@@ -15,7 +15,6 @@ import {
   PopoverContent,
   PopoverTrigger,
 } from "@/components/ui/popover";
-import LanguageSelector from "./navbar-components/language-selector";
 
 // Navigation links with icons for desktop icon-only navigation
 const navigationLinks = [
@@ -24,10 +23,40 @@ const navigationLinks = [
   { href: "/todo", label: "Todo", icon: LayersIcon },
 ];
 
+// Main navigation menu items
+const mainNavigationItems = [
+  {
+    title: "Cognitive Platforms",
+    items: [
+      { href: "/cognitive-platforms/loop-ai-agents-orchestra", label: "Loop AI Agents Orchestra", icon: Bot },
+      { href: "/cognitive-platforms/loop-q", label: "Loop Q Cognitive Platform", icon: Brain },
+      { href: "/cognitive-platforms/platform-facts", label: "Loop Platform Facts", icon: BarChart3 },
+      { href: "/cognitive-platforms/book-demo", label: "Book a Demo", icon: Calendar },
+    ]
+  },
+  {
+    title: "Company",
+    items: [
+      { href: "/company/about-us", label: "About Us", icon: Building },
+      { href: "/company/team", label: "Team", icon: Users },
+      { href: "/company/media-analyst-relations", label: "Media & Analyst Relations", icon: FileText },
+      { href: "/company/loop-ai-research", label: "Loop AI Research (LAIR)", icon: Brain },
+      { href: "/company/careers", label: "Careers", icon: Users },
+      { href: "/company/videos", label: "Videos", icon: Video },
+      { href: "/company/contact", label: "Contact", icon: Mail },
+    ]
+  }
+];
+
+// Additional navigation items (not in dropdown)
+const additionalNavItems = [
+  { href: "/success-cases", label: "Success Cases", icon: Award },
+];
+
 export default function Navbar() {
   return (
     <header className="border-b px-4 md:px-6">
-      <div className="flex h-16 items-center justify-between gap-4">
+      <div className="flex h-20 items-center justify-between gap-4 md:h-24">
         {/* Left side */}
         <div className="flex flex-1 items-center gap-2">
           {/* Mobile menu trigger */}
@@ -65,28 +94,58 @@ export default function Navbar() {
                 </svg>
               </Button>
             </PopoverTrigger>
-            <PopoverContent align="start" className="w-36 p-1 md:hidden">
+            <PopoverContent align="start" className="w-80 p-1 md:hidden">
               <NavigationMenu className="max-w-none *:w-full">
                 <NavigationMenuList className="flex-col items-start gap-0 md:gap-2">
-                  {navigationLinks.map((link, index) => {
-                    const Icon = link.icon;
-                    return (
-                      <NavigationMenuItem key={index} className="w-full">
-                        <NavigationMenuLink
-                          href={link.href}
-                          className="flex-row items-center gap-2 py-1.5"
-                          active={link.active}
-                        >
-                          <Icon
-                            size={16}
-                            className="text-muted-foreground"
-                            aria-hidden="true"
-                          />
-                          <span>{link.label}</span>
-                        </NavigationMenuLink>
-                      </NavigationMenuItem>
-                    );
-                  })}
+                  {mainNavigationItems.map((section, sectionIndex) => (
+                    <div key={sectionIndex} className="w-full">
+                      <div className="px-3 py-2 text-sm font-semibold text-muted-foreground border-b">
+                        {section.title}
+                      </div>
+                      {section.items.map((item, itemIndex) => {
+                        const Icon = item.icon;
+                        return (
+                          <NavigationMenuItem key={itemIndex} className="w-full">
+                            <NavigationMenuLink
+                              href={item.href}
+                              className="flex-row items-center gap-2 py-1.5 px-3"
+                            >
+                              <Icon
+                                size={16}
+                                className="text-muted-foreground"
+                                aria-hidden="true"
+                              />
+                              <span>{item.label}</span>
+                            </NavigationMenuLink>
+                          </NavigationMenuItem>
+                        );
+                      })}
+                    </div>
+                  ))}
+                  {/* Additional navigation items for mobile */}
+                  <div className="w-full">
+                    <div className="px-3 py-2 text-sm font-semibold text-muted-foreground border-b">
+                      Additional
+                    </div>
+                    {additionalNavItems.map((item, itemIndex) => {
+                      const Icon = item.icon;
+                      return (
+                        <NavigationMenuItem key={`mobile-additional-${itemIndex}`} className="w-full">
+                          <NavigationMenuLink
+                            href={item.href}
+                            className="flex-row items-center gap-2 py-1.5 px-3"
+                          >
+                            <Icon
+                              size={16}
+                              className="text-muted-foreground"
+                              aria-hidden="true"
+                            />
+                            <span>{item.label}</span>
+                          </NavigationMenuLink>
+                        </NavigationMenuItem>
+                      );
+                    })}
+                  </div>
                 </NavigationMenuList>
               </NavigationMenu>
             </PopoverContent>
@@ -96,30 +155,65 @@ export default function Navbar() {
             <Link href="/" className="text-primary hover:text-primary/90">
               <Logo />
             </Link>
-            {/* Desktop navigation - icon only */}
+            {/* Desktop navigation - main menu */}
             <NavigationMenu className="hidden md:flex">
-              <NavigationMenuList className="gap-2">
-                {navigationLinks.map((link, index) => (
-                  <NavigationMenuItem key={index}>
-                    <NavigationMenuLink
-                      active={link.active}
-                      href={link.href}
-                      className="py-1.5 font-medium text-muted-foreground hover:text-primary"
-                    >
-                      {link.label}
-                    </NavigationMenuLink>
+              <NavigationMenuList className="gap-6">
+                {mainNavigationItems.map((section, sectionIndex) => (
+                  <NavigationMenuItem key={sectionIndex}>
+                    <Popover>
+                      <PopoverTrigger asChild>
+                        <Button variant="ghost" className="text-muted-foreground hover:text-primary">
+                          {section.title}
+                        </Button>
+                      </PopoverTrigger>
+                      <PopoverContent align="start" className="w-64 p-2">
+                        <div className="space-y-1">
+                          {section.items.map((item, itemIndex) => {
+                            const Icon = item.icon;
+                            return (
+                              <Link
+                                key={itemIndex}
+                                href={item.href}
+                                className="flex items-center space-x-3 rounded-md px-3 py-2 text-sm hover:bg-accent hover:text-accent-foreground"
+                              >
+                                <Icon className="h-4 w-4" />
+                                <span>{item.label}</span>
+                              </Link>
+                            );
+                          })}
+                        </div>
+                      </PopoverContent>
+                    </Popover>
                   </NavigationMenuItem>
                 ))}
+                {/* Additional navigation items */}
+                {additionalNavItems.map((item, index) => {
+                  const Icon = item.icon;
+                  return (
+                    <NavigationMenuItem key={`additional-${index}`}>
+                      <Link
+                        href={item.href}
+                        className="flex items-center space-x-2 rounded-md px-3 py-2 text-sm text-muted-foreground hover:text-primary hover:bg-accent"
+                      >
+                        <Icon className="h-4 w-4" />
+                        <span>{item.label}</span>
+                      </Link>
+                    </NavigationMenuItem>
+                  );
+                })}
               </NavigationMenuList>
             </NavigationMenu>
           </div>
         </div>
         {/* Right side */}
         <div className="flex items-center gap-2">
+          {/* Book a Demo button */}
+          <Button size="sm" className="hidden md:flex">
+            <Calendar className="mr-2 h-4 w-4" />
+            Book a Demo
+          </Button>
           {/* Theme toggle */}
           <ThemeToggle />
-          {/* Language selector */}
-          <LanguageSelector />
         </div>
       </div>
     </header>

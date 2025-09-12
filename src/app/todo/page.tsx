@@ -20,7 +20,6 @@ import {
   HydrateClient,
   trpc,
 } from "@/shared/helpers/trpc/server";
-import { getScopedI18n } from "@/shared/locales/server";
 import { todoFilterParamsSchema } from "@/shared/validators/todo.schema";
 
 type TodoPageProps = {
@@ -28,9 +27,6 @@ type TodoPageProps = {
 };
 
 export default async function TodoPage(props: TodoPageProps) {
-  // Get scoped translations for i18n
-  const t = await getScopedI18n("todo");
-
   // Load search parameters
   const searchParams = await props.searchParams;
   const loadTodoFilterParams = createLoader(todoFilterParamsSchema);
@@ -49,8 +45,8 @@ export default async function TodoPage(props: TodoPageProps) {
       <div className="mx-auto w-full max-w-md py-10">
         <Card>
           <CardHeader>
-            <CardTitle>{t("title")}</CardTitle>
-            <CardDescription>{t("subtitle")}</CardDescription>
+            <CardTitle>Todo List</CardTitle>
+            <CardDescription>Manage your tasks efficiently</CardDescription>
           </CardHeader>
           <CardContent>
             <CreatePostForm />

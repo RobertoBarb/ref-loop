@@ -1,0 +1,47 @@
+---
+description: Project guidelines for ref-loop frontend refactoring
+globs: 
+alwaysApply: true
+---
+
+# Project Guidelines: ref-loop Frontend Refactoring
+
+## Project Context
+
+This project is a **frontend refactoring** of the Loop AI Group website. The goal is to modernize and improve the user interface while maintaining the core functionality and branding.
+
+## Language Requirements
+
+- **All text content must be in English** - This is a requirement for consistency with the original Loop AI Group branding and international audience
+- Do not translate content to Italian or other languages unless specifically requested
+- Maintain the exact wording from the official Loop AI Group website when possible
+
+## Key Principles
+
+1. **Brand Consistency**: Use the exact text and messaging from the official Loop AI Group website
+2. **Modern UI/UX**: Implement contemporary design patterns and user experience best practices
+3. **Performance**: Optimize for fast loading and smooth interactions
+4. **Accessibility**: Ensure the interface is accessible to all users
+5. **Responsive Design**: Make sure the interface works across all device sizes
+
+## Content Guidelines
+
+- Use the official Loop AI Group taglines and descriptions
+- Maintain the professional tone and enterprise focus
+- Keep technical terminology accurate and consistent
+- Preserve the AI/ML industry-specific language
+
+## Development Standards
+
+- Follow the existing code structure and patterns
+- Use TypeScript for type safety
+- Implement proper error handling
+- Write clean, maintainable code
+- Follow the established component architecture
+
+## Assets
+
+- Use the provided Loop AI Group logos and images
+- Maintain brand colors and visual identity
+- Optimize images for web performance
+- Use appropriate file formats (AVIF for images when possible)

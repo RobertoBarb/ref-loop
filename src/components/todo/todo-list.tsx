@@ -6,12 +6,10 @@ import { toast } from "sonner";
 
 import { useTodoFilterParams } from "@/hooks/use-todo-filter-params";
 import { useTRPC } from "@/shared/helpers/trpc/client";
-import { useScopedI18n } from "@/shared/locales/client";
 import { Button } from "../ui/button";
 import { Checkbox } from "../ui/checkbox";
 
 export function TodoList() {
-  const t = useScopedI18n("todo");
 
   const { filter } = useTodoFilterParams();
 
@@ -80,7 +78,7 @@ export function TodoList() {
         ))}
       </ul>
       <span className="text-right text-muted-foreground">
-        {t("items", { count: data.length })}
+        {data.length} {data.length === 1 ? 'item' : 'items'}
       </span>
     </div>
   );

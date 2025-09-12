@@ -4,20 +4,22 @@ import { MoonIcon, SunIcon } from "lucide-react";
 import { useTheme } from "next-themes";
 
 import { Toggle } from "@/components/ui/toggle";
+import { useHydration } from "@/hooks/use-hydration";
 
 export default function ThemeToggle() {
   const { theme, setTheme } = useTheme();
+  const isHydrated = useHydration();
 
   return (
     <div>
       <Toggle
         variant="outline"
         className="group size-8 rounded-full border-none text-muted-foreground shadow-none data-[state=on]:bg-transparent data-[state=on]:text-muted-foreground data-[state=on]:hover:bg-muted data-[state=on]:hover:text-foreground"
-        pressed={theme === "dark"}
+        pressed={isHydrated ? theme === "dark" : false}
         onPressedChange={() =>
           setTheme((prev) => (prev === "dark" ? "light" : "dark"))
         }
-        aria-label={`Switch to ${theme === "dark" ? "light" : "dark"} mode`}
+        aria-label={isHydrated ? `Switch to ${theme === "dark" ? "light" : "dark"} mode` : "Switch theme"}
       >
         {/* Note: After dark mode implementation, rely on dark: prefix rather than group-data-[state=on]: */}
         <MoonIcon

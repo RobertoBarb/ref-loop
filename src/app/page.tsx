@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { ArrowRight, Bot, Brain, Cloud, Database, Globe, Play, Sparkles, Zap } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
@@ -17,24 +18,22 @@ export default function Home() {
             <div className="space-y-8">
               <div className="space-y-4">
                 <h1 className="text-5xl lg:text-7xl font-bold tracking-tight">
-                  La Piattaforma{" "}
+                  The Leading{" "}
                   <span className="gradient-text">AI Agents</span>{" "}
-                  Leader
+                  Platform
                 </h1>
                 <p className="text-xl text-muted-foreground max-w-2xl">
-                  Potenzia la tua forza lavoro costruendo i tuoi AI Agents enterprise 
-                  che forniscono lavoro reale utilizzando qualsiasi ML/LLM, i tuoi sistemi legacy 
-                  e la tua infrastruttura.
+                  Boost your workforce building your own enterprise AI Agents that deliver real work using any ML/LLM, your legacy systems and your infrastructure.
                 </p>
               </div>
               
               <div className="flex flex-col sm:flex-row gap-4">
                 <Button size="lg" className="pulse-glow">
                   <Play className="mr-2 h-5 w-5" />
-                  Prenota una Demo
+                  Book a Demo
                 </Button>
                 <Button variant="outline" size="lg">
-                  Scopri di Più
+                  Learn More
                   <ArrowRight className="ml-2 h-4 w-4" />
                 </Button>
               </div>
@@ -42,12 +41,12 @@ export default function Home() {
             
             <div className="relative">
               <div className="glass-effect rounded-2xl p-8 floating-animation">
-                <div className="aspect-square bg-gradient-to-br from-primary/20 to-accent/20 rounded-xl flex items-center justify-center">
-                  <div className="text-center space-y-4">
-                    <Bot className="h-24 w-24 mx-auto text-primary" />
-                    <h3 className="text-2xl font-semibold">AI Agent Orchestra</h3>
-                    <p className="text-muted-foreground">Gestione intelligente degli agenti AI</p>
-                  </div>
+                <div className="aspect-square bg-gradient-to-br from-primary/20 to-accent/20 rounded-xl flex items-center justify-center overflow-hidden">
+                  <img 
+                    src="/images/orchestra.avif" 
+                    alt="Loop AI Agent Orchestra" 
+                    className="w-full h-full object-cover rounded-xl"
+                  />
                 </div>
               </div>
               
@@ -64,11 +63,11 @@ export default function Home() {
         <div className="container mx-auto px-4">
           <div className="text-center space-y-4 mb-16">
             <h2 className="text-4xl lg:text-5xl font-bold">
-              Riprendi il Controllo e Attraversa il{" "}
-              <span className="gradient-text">Caos dell'AI</span>
+              Take Control and Cut Through the{" "}
+              <span className="gradient-text">AI Chaos</span>
             </h2>
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-              Con Loop AI Agent Orchestra, riprendi il controllo e attraversa il caos dell'AI!
+              With Loop AI Agent Orchestra, regain control and cut through the chaos of AI!
             </p>
           </div>
 
@@ -76,23 +75,23 @@ export default function Home() {
             {[
               {
                 icon: Brain,
-                title: "Qualsiasi ML o LLM",
-                description: "Sfrutta qualsiasi LLM/ML o i modelli integrati di Loop Q, personalizzati per il caso d'uso del tuo AI agent."
+                title: "ANY ML or LLM",
+                description: "Leverage any LLM/ML or Loop Q's integrated models, tailored to your AI agent's use case, accuracy needs, and budget—via APIs or local open-source solutions."
               },
               {
                 icon: Database,
-                title: "Qualsiasi Sistema Legacy",
-                description: "I tuoi AI agents imparano dai colleghi umani utilizzando dati storici, eseguendo compiti semplici e complessi."
+                title: "ANY LEGACY SYSTEM",
+                description: "Your AI agents learn from human peers using historical data, seamlessly executing both simple and complex tasks within your existing enterprise systems."
               },
               {
                 icon: Cloud,
-                title: "Qualsiasi Infrastruttura",
-                description: "Esegui e scala training, inferenza e i tuoi AI agents enterprise senza problemi attraverso la tua infrastruttura."
+                title: "ANY INFRASTRUCTURE",
+                description: "Run and scale training, inference, and your enterprise AI agents seamlessly across your infrastructure—whether on-premises, in private or public clouds, hybrid environments."
               },
               {
                 icon: Sparkles,
-                title: "Strumenti Low-Code",
-                description: "Strumenti visuali no-code e low-code costruiti per i team, con permessi granulari per sviluppo, test e deployment."
+                title: "LOW-CODE TOOLS FOR TEAMS",
+                description: "No-code and low-code visual tools built for teams, featuring granular permissions for development, testing, and deployment."
               }
             ].map((feature, index) => (
               <Card key={index} className="glass-effect hover:scale-105 transition-transform duration-300">
@@ -114,20 +113,19 @@ export default function Home() {
         <div className="container mx-auto px-4 text-center">
           <div className="max-w-4xl mx-auto space-y-8">
             <h2 className="text-4xl lg:text-5xl font-bold text-white">
-              Gestione degli AI Agents Semplificata
+              AI Agents Management Made Simple
             </h2>
             <p className="text-xl text-white/90">
-              Distribuisci, scala e gestisci senza problemi tutte le tue soluzioni AI 
-              e AI Agents attraverso più vendor da una piattaforma unificata.
+              Seamlessly deploy, scale, and manage all your AI solutions and AI Agents across multiple vendors from one unified platform.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button size="lg" variant="secondary" className="bg-white text-primary hover:bg-white/90">
                 <Zap className="mr-2 h-5 w-5" />
-                Inizia Ora
+                Get Started
               </Button>
               <Button size="lg" variant="outline" className="border-white text-white hover:bg-white/10">
                 <Globe className="mr-2 h-5 w-5" />
-                Scopri le Soluzioni
+                Explore Solutions
               </Button>
             </div>
           </div>
@@ -139,11 +137,17 @@ export default function Home() {
         <div className="container mx-auto px-4">
           <div className="flex flex-col items-center justify-center gap-4 text-center">
             <div className="flex items-center gap-2">
-              <Bot className="h-6 w-6 text-primary" />
+              <Image
+                src="/loopai_Group_Logo_2022.avif"
+                alt="Loop AI Group"
+                width={24}
+                height={24}
+                className="h-6 w-6 object-contain"
+              />
               <span className="text-xl font-bold">Loop AI Group</span>
             </div>
             <p className="text-sm text-muted-foreground">
-              &copy; {new Date().getFullYear()} Loop AI Group e le sue affiliate. Tutti i diritti riservati.
+              &copy; {new Date().getFullYear()} Loop AI Group and its affiliates. All Rights Reserved.
             </p>
           </div>
         </div>
