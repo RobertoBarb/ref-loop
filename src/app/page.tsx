@@ -11,13 +11,13 @@ export default function Home() {
   return (
     <div className="min-h-screen bg-background">
       {/* Hero Section */}
-      <section className="relative overflow-hidden bg-gradient-to-br from-background via-background to-primary/5">
+      <section className="relative overflow-hidden bg-gradient-to-br from-background via-background to-primary/5 min-h-[80vh] flex items-center">
         <div className="absolute inset-0 bg-grid-pattern opacity-5"></div>
-        <div className="container mx-auto px-4 py-20 lg:py-32">
+        <div className="container mx-auto px-4 py-16 md:py-24 lg:py-0">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div className="space-y-8">
               <div className="space-y-4">
-                <h1 className="text-5xl lg:text-7xl font-bold tracking-tight">
+                <h1 className="text-6xl lg:text-8xl font-bold tracking-tight leading-tight">
                   The Leading{" "}
                   <span className="gradient-text">AI Agents</span>{" "}
                   Platform
@@ -40,15 +40,18 @@ export default function Home() {
             </div>
             
             <div className="relative">
-              <div className="glass-effect rounded-2xl p-8 floating-animation">
-                <div className="aspect-square bg-gradient-to-br from-primary/20 to-accent/20 rounded-xl flex items-center justify-center overflow-hidden">
-                  <img 
-                    src="/images/orchestra.avif" 
-                    alt="Loop AI Agent Orchestra" 
-                    className="w-full h-full object-cover rounded-xl"
-                  />
+              <Link href="/cognitive-platforms/loop-ai-agents-orchestra">
+                <div className="glass-effect rounded-2xl p-8 hover:scale-105 transition-transform duration-300 cursor-pointer">
+                  <div className="aspect-square bg-gradient-to-br from-primary/20 to-accent/20 rounded-xl flex items-center justify-center overflow-hidden">
+                    <Image 
+                      src="/images/orchestra.avif" 
+                      alt="Loop AI Agent Orchestra" 
+                      fill
+                      className="object-cover rounded-xl"
+                    />
+                  </div>
                 </div>
-              </div>
+              </Link>
               
               {/* Floating Elements */}
               <div className="absolute -top-4 -right-4 w-20 h-20 bg-accent/20 rounded-full blur-xl"></div>
@@ -69,6 +72,19 @@ export default function Home() {
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
               With Loop AI Agent Orchestra, regain control and cut through the chaos of AI!
             </p>
+            
+            {/* AI Chaos Visual */}
+            <div className="flex justify-center mt-8">
+              <div className="glass-effect rounded-2xl p-6 max-w-2xl">
+                <Image
+                  src="/images/ai caos.avif"
+                  alt="AI Chaos - Take Control"
+                  width={600}
+                  height={450}
+                  className="rounded-xl w-full h-auto"
+                />
+              </div>
+            </div>
           </div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
@@ -104,6 +120,37 @@ export default function Home() {
                 </CardContent>
               </Card>
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* YouTube Video Section */}
+      <section className="py-20 bg-background">
+        <div className="container mx-auto px-4">
+          <div className="max-w-4xl mx-auto">
+            <div className="text-center space-y-4 mb-12">
+              <h2 className="text-3xl lg:text-4xl font-bold">
+                See Loop AI Agents Orchestra in Action
+              </h2>
+              <p className="text-lg text-muted-foreground">
+                Discover how leading enterprises are transforming their operations with AI Agents
+              </p>
+            </div>
+            
+            <div className="glass-effect rounded-2xl p-6">
+              <div className="aspect-video rounded-xl overflow-hidden">
+                <iframe
+                  width="100%"
+                  height="100%"
+                  src="https://www.youtube.com/embed/qbuutZhOxrc"
+                  title="Loop AI Group - The AI Agents Platform"
+                  frameBorder="0"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowFullScreen
+                  className="rounded-xl"
+                ></iframe>
+              </div>
+            </div>
           </div>
         </div>
       </section>
