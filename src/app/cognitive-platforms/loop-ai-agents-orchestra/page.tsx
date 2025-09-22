@@ -14,21 +14,34 @@ export default function LoopAIAgentsOrchestra() {
       <section className="relative overflow-hidden bg-gradient-to-br from-background via-background to-primary/5">
         <div className="absolute inset-0 bg-grid-pattern opacity-5"></div>
         <div className="container mx-auto px-4 py-20 lg:py-32">
-          <div className="text-center space-y-8">
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
+            <div className="space-y-8">
               <div className="space-y-4">
                 <h1 className="text-5xl lg:text-7xl font-bold tracking-tight">
-                The AI Agents Platform
+                  The <span className="gradient-text">AI Agents</span> Platform
                 </h1>
-              <p className="text-xl text-muted-foreground max-w-4xl mx-auto">
-                Loop Agent Orchestra serves as an enterprise AI single agent or multi-agent development and orchestration hub, integrating four foundational layers
+                <p className="text-xl text-muted-foreground max-w-2xl">
+                  Loop Agent Orchestra serves as an enterprise AI single agent or multi-agent development and orchestration hub, integrating four foundational layers
                 </p>
               </div>
               
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <Button size="lg" className="pulse-glow">
-                  <Play className="mr-2 h-5 w-5" />
-                BOOK A DEMO
-                </Button>
+            </div>
+            
+            <div className="relative">
+              <div className="glass-effect rounded-2xl p-8 hover:scale-105 transition-transform duration-300">
+                <div className="aspect-square bg-gradient-to-br from-primary/20 to-accent/20 rounded-xl flex items-center justify-center overflow-hidden">
+                  <Image 
+                    src="/images/orchestra.avif" 
+                    alt="Loop AI Agent Orchestra" 
+                    fill
+                    className="object-cover rounded-xl"
+                  />
+                </div>
+              </div>
+              
+              {/* Floating Elements */}
+              <div className="absolute -top-4 -right-4 w-20 h-20 bg-accent/20 rounded-full blur-xl"></div>
+              <div className="absolute -bottom-4 -left-4 w-32 h-32 bg-primary/20 rounded-full blur-xl"></div>
             </div>
           </div>
         </div>
@@ -302,14 +315,15 @@ export default function LoopAIAgentsOrchestra() {
       </section>
 
       {/* Vendor Agnostic AI Control Center */}
-      <section className="py-20 bg-muted/30">
-        <div className="container mx-auto px-4">
+      <section className="py-20 relative overflow-hidden bg-gradient-to-br from-blue-50/50 via-background to-purple-50/50 dark:from-blue-950/30 dark:via-background dark:to-purple-950/30">
+        <div className="absolute inset-0 bg-grid-pattern opacity-10"></div>
+        <div className="container mx-auto px-4 relative">
           <div className="text-center space-y-8 mb-16">
             <h2 className="text-4xl lg:text-5xl font-bold">
               Vendor Agnostic AI Control Center for AI Agent Lifecycle Management
             </h2>
             <p className="text-xl text-muted-foreground max-w-4xl mx-auto">
-              Loop AI Agents Orchestra is a powerful and scalable framework designed to simplify the development, deployment, optimization, and monitoring of AI agents. Since 2019, the platform has been validated in mission-critical production environments with Fortune 100 organizations.
+              Loop AI Agents Orchestra is a powerful and scalable framework designed to simplify the development, deployment, optimization, and monitoring of AI agents. Since 2019, the platform <span className="text-primary font-semibold">has been validated in mission-critical production environments with Fortune 100 organizations</span>.
             </p>
             <p className="text-xl text-muted-foreground max-w-4xl mx-auto">
               Built on a vendor-agnostic architecture, Loop AI Agents Orchestra seamlessly integrates diverse AI technologies—including commercial APIs, open-source libraries, and proprietary algorithms—into a unified lifecycle management solution. This ensures optimal computational efficiency, superior algorithmic performance, and cost-effective operation across all AI agent components.
@@ -374,16 +388,29 @@ export default function LoopAIAgentsOrchestra() {
             </Card>
             </div>
 
-          {/* Training Models Image */}
-          <div className="text-center mb-16">
-            <Image 
-              src="/images/Loop AI Agent Orchestra - Training Models.avif" 
-              alt="Loop AI Agent Orchestra - Training Models" 
-              width={1200}
-              height={600}
-              className="w-full max-w-4xl mx-auto rounded-xl shadow-2xl"
-              priority
-            />
+          {/* Training Models Images Side by Side */}
+          <div className="grid md:grid-cols-2 gap-8 mb-16">
+            <div className="glass-effect rounded-2xl p-6">
+              <div className="aspect-[4/3] relative">
+                <Image 
+                  src="/images/Loop AI Agent Orchestra - Training Models.avif" 
+                  alt="Loop AI Agent Orchestra - Training Models" 
+                  fill
+                  className="object-cover rounded-xl shadow-xl"
+                  priority
+                />
+              </div>
+            </div>
+            <div className="glass-effect rounded-2xl p-6">
+              <div className="aspect-[4/3] relative">
+                <Image 
+                  src="/images/loopai_orchestra-training_model_2.avif" 
+                  alt="Loop AI Agent Orchestra - Training Models 2" 
+                  fill
+                  className="object-cover rounded-xl shadow-xl"
+                />
+              </div>
+            </div>
           </div>
         </div>
       </section>
@@ -400,8 +427,9 @@ export default function LoopAIAgentsOrchestra() {
             </p>
           </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 mb-16">
-            <Card className="glass-effect text-center">
+          {/* First Row - 3 Cards */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
+            <Card className="glass-effect text-center hover:scale-105 transition-transform duration-300">
               <CardContent className="p-6 space-y-4">
                 <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mx-auto">
                   <TrendingUp className="h-6 w-6 text-primary" />
@@ -411,7 +439,7 @@ export default function LoopAIAgentsOrchestra() {
               </CardContent>
             </Card>
             
-            <Card className="glass-effect text-center">
+            <Card className="glass-effect text-center hover:scale-105 transition-transform duration-300">
               <CardContent className="p-6 space-y-4">
                 <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mx-auto">
                   <Clock className="h-6 w-6 text-primary" />
@@ -421,7 +449,7 @@ export default function LoopAIAgentsOrchestra() {
               </CardContent>
             </Card>
             
-            <Card className="glass-effect text-center">
+            <Card className="glass-effect text-center hover:scale-105 transition-transform duration-300">
               <CardContent className="p-6 space-y-4">
                 <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mx-auto">
                   <Shield className="h-6 w-6 text-primary" />
@@ -430,8 +458,11 @@ export default function LoopAIAgentsOrchestra() {
                 <p className="text-muted-foreground">Avoid lock-in with a pluggable, multi-vendor runtime environment.</p>
               </CardContent>
             </Card>
-            
-            <Card className="glass-effect text-center">
+          </div>
+
+          {/* Second Row - 2 Cards (More elongated) */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
+            <Card className="glass-effect text-center hover:scale-105 transition-transform duration-300">
               <CardContent className="p-6 space-y-4">
                 <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mx-auto">
                   <Zap className="h-6 w-6 text-primary" />
@@ -440,18 +471,16 @@ export default function LoopAIAgentsOrchestra() {
                 <p className="text-muted-foreground">Sub-millisecond algorithm swaps via service orchestration.</p>
               </CardContent>
             </Card>
-          </div>
-
-          <div className="grid md:grid-cols-2 gap-8 mb-16">
-            <Card className="glass-effect text-center">
-                <CardContent className="p-6 space-y-4">
+            
+            <Card className="glass-effect text-center hover:scale-105 transition-transform duration-300">
+              <CardContent className="p-6 space-y-4">
                 <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mx-auto">
                   <BarChart3 className="h-6 w-6 text-primary" />
-                  </div>
+                </div>
                 <h3 className="text-xl font-semibold">Observability</h3>
                 <p className="text-muted-foreground">Integrated dashboards for latency, throughput, and model drift monitoring.</p>
-                </CardContent>
-              </Card>
+              </CardContent>
+            </Card>
           </div>
 
           {/* LLM-ML Building Image */}
@@ -639,20 +668,25 @@ export default function LoopAIAgentsOrchestra() {
       </section>
 
       {/* Engineer Your AI Future */}
-      <section className="py-20">
+      <section className="py-20 gradient-bg">
         <div className="container mx-auto px-4 text-center">
           <div className="max-w-4xl mx-auto space-y-8">
-            <h2 className="text-4xl lg:text-5xl font-bold">
+            <h2 className="text-4xl lg:text-5xl font-bold text-white">
               Engineer Your AI Future
             </h2>
-            <p className="text-xl text-muted-foreground">
+            <p className="text-xl text-white/90">
               Loop AI Agents Orchestra is a battle-tested platform, developed since 2012, for organizations building and scaling a digital workforce of AI agents. Whether optimizing LLMs for natural language tasks or deploying reinforcement learning for automation, it provides a vendor-agnostic strategy, flexibility, and cost optimization—keeping you in full control of your AI vendors and consultants.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button size="lg" className="pulse-glow" asChild>
+              <Button size="lg" variant="secondary" className="bg-white text-primary hover:bg-white/90" asChild>
                 <Link href="/success-cases">
                   <Play className="mr-2 h-5 w-5" />
                   SUCCESS CASES
+                </Link>
+              </Button>
+              <Button size="lg" variant="outline" className="border-white text-white hover:bg-white/10" asChild>
+                <Link href="/cognitive-platforms/book-demo">
+                  BOOK A DEMO
                 </Link>
               </Button>
             </div>
@@ -667,14 +701,40 @@ export default function LoopAIAgentsOrchestra() {
             <h2 className="text-4xl lg:text-5xl font-bold">
               AI Agent Management Made Simple
             </h2>
-            <h3 className="text-2xl lg:text-3xl font-semibold text-muted-foreground">
-              Your Next AI Agent Is Minutes Away. No Coding Required.
-            </h3>
-            <p className="text-xl text-muted-foreground">
+            
+            {/* Video Embed */}
+            <div className="mt-12">
+              <div className="glass-effect rounded-2xl p-6 max-w-4xl mx-auto">
+                <div className="aspect-video rounded-xl overflow-hidden">
+                  <iframe
+                    width="100%"
+                    height="100%"
+                    src="https://www.youtube.com/embed/qbuutZhOxrc"
+                    title="Loop AI Group - The AI Agents Platform"
+                    frameBorder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowFullScreen
+                    className="rounded-xl"
+                  ></iframe>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Your Next AI Agent Is Minutes Away */}
+      <section className="py-20 gradient-bg">
+        <div className="container mx-auto px-4 text-center">
+          <div className="max-w-4xl mx-auto space-y-8">
+            <h2 className="text-4xl lg:text-5xl font-bold text-white">
+              Your Next AI Agent is Minutes Away. No Coding Required.
+            </h2>
+            <p className="text-xl text-white/90">
               Smart. Fast. Tireless. Build your competitive digital workforce today from prototype to production.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button size="lg" className="pulse-glow" asChild>
+              <Button size="lg" variant="secondary" className="bg-white text-primary hover:bg-white/90" asChild>
                 <Link href="/cognitive-platforms/book-demo">
                   <Play className="mr-2 h-5 w-5" />
                   BOOK A DEMO
