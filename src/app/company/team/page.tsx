@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import Image from "next/image";
-import { Calendar, Globe, Mail, Linkedin } from "lucide-react";
+import { Mail, Linkedin } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
@@ -40,47 +40,47 @@ export default function Team() {
                 {
                   name: "GM Calafiore",
                   role: "PRESIDENT, FOUNDER",
-                  image: "/images/team/GM.avif"
+                  image: "/images/Team/GM.avif"
                 },
                 {
                   name: "Patrick Ehlen, PhD",
                   role: "CHIEF AI ADVISOR",
-                  image: "/images/team/Patrick_new.avif"
+                  image: "/images/Team/Patrick_new.avif"
                 },
                 {
                   name: "Viqar Shariff",
                   role: "CHIEF STRATEGY OFFICER",
-                  image: "/images/team/viqar.avif"
+                  image: "/images/Team/viqar.avif"
                 },
                 {
                   name: "Andrea Pitrone",
                   role: "CHIEF OPERATING OFFICER",
-                  image: "/images/team/andrea.avif"
+                  image: "/images/Team/andrea.avif"
                 },
                 {
                   name: "Daniele Preda",
                   role: "CUSTOMER SUCCESS DIRECTOR",
-                  image: "/images/team/daniele_preda.png"
+                  image: "/images/Team/daniele_preda.PNG"
                 },
                 {
                   name: "Luigi Manzi",
                   role: "HEAD OF SOFTWARE ENGINEERING",
-                  image: "/images/team/luigi.avif"
+                  image: "/images/Team/luigi.avif"
                 },
                 {
                   name: "Marco Torresi",
                   role: "HEAD OF GLOBAL PR",
-                  image: "/images/team/marco.avif"
+                  image: "/images/Team/marco.avif"
                 },
                 {
                   name: "Jaana Heikkila",
                   role: "VP, MARKETING",
-                  image: "/images/team/jaana.avif"
+                  image: "/images/Team/jaana.avif"
                 },
                 {
                   name: "Ilaria Colleoni",
                   role: "CHIEF EXECUTIVE OFFICER",
-                  image: "/images/team/ilaria.avif"
+                  image: "/images/Team/ilaria.avif"
                 }
               ].map((member, index) => (
                 <Card key={index} className="glass-effect hover:scale-105 transition-transform duration-300">
@@ -141,31 +141,31 @@ export default function Team() {
               {[
                 {
                   name: "Tom Davenport",
-                  image: "/images/team/tom_davenport.avif"
+                  image: "/images/Team/tom_davenport.avif"
                 },
                 {
                   name: "Vinay Chaudhri",
-                  image: "/images/team/vinay.avif"
+                  image: "/images/Team/vinay.avif"
                 },
                 {
                   name: "Raul Véjar",
-                  image: "/images/team/raul.avif"
+                  image: "/images/Team/raul.avif"
                 },
                 {
                   name: "Massimo Marchiori",
-                  image: "/images/team/massimo.avif"
+                  image: "/images/Team/massimo.avif"
                 },
                 {
                   name: "Tony Trousset",
-                  image: "/images/team/tony.avif"
+                  image: "/images/Team/tony.avif"
                 },
                 {
                   name: "Doug Bewsher",
-                  image: "/images/team/doug.avif"
+                  image: "/images/Team/doug.avif"
                 },
                 {
                   name: "Claus Karthe",
-                  image: "/images/team/claus.avif"
+                  image: "/images/Team/claus.avif"
                 }
               ].map((advisor, index) => (
                 <Card key={index} className="glass-effect hover:scale-105 transition-transform duration-300">

@@ -21,7 +21,7 @@ const teamMembers: Record<string, TeamMember> = {
   "gm-calafiore": {
     name: "GM Calafiore",
     role: "PRESIDENT, FOUNDER",
-    image: "/images/team/GM.avif",
+    image: "/images/Team/GM.avif",
     bio: "GM is the President and Founder of Loop AI Group. A lifelong serial entrepreneur, he first became a CEO at age 19. His career launched as an independent consultant, overseeing projects for Fortune 100 Italian firms to integrate their internal computing systems with Internet and mobile technologies.",
     detailedBio: `Subsequently, GM established GSMBOX, the pioneering pan-European mobile media group that seamlessly fused mobile, Internet, and television platforms. Headquartered in Italy, GSMBOX grew to include subsidiaries in Spain, France, Germany, the UK, and Portugal. In collaboration with Telecinco—Spain's top commercial broadcaster—and Endemol (now part of 21st Century Fox), a global leader in television entertainment, GSMBOX introduced the world's first interactive TV format, driving the Mobile Premium Services market. GM also co-founded Endemol-GSMBOX, a London-based joint venture with Endemol International, dedicated to embedding mobile media interactions into Endemol's globally distributed formats. GSMBOX was later acquired by a subsidiary of NTT DoCoMo.
 
@@ -30,7 +30,7 @@ Under GM's guidance, GSMBOX transformed from a vision into a powerhouse, gaining
   "patrick-ehlen": {
     name: "Patrick Ehlen, PhD",
     role: "CHIEF AI ADVISOR",
-    image: "/images/team/Patrick_new.avif",
+    image: "/images/Team/Patrick_new.avif",
     bio: "Patrick's fascination with artificial intelligence began in third grade after reading Arthur C. Clarke's *2001: A Space Odyssey*. In 1992, inspired by the *Parallel Distributed Processing* volumes, he trained his first neural network to learn distributed representations of concepts.",
     detailedBio: `Patrick earned a PhD in Cognitive Psychology from the New School for Social Research, where he received the Dissertation Fellowship, the Alfred J. Marrow Memorial Award in Psychology, and became the inaugural recipient of the Charles Cannell Fund award from the University of Michigan for his innovative mathematical modeling of concept processing. During his doctoral studies, he interned at Dragon Systems—a speech recognition pioneer later acquired by Nuance—and at AT&T Labs-Research, where he spearheaded advancements in speech and multimodal understanding technologies. He then joined the Center for the Study of Language and Information (CSLI), an AI hub at Stanford University.
 
@@ -41,7 +41,7 @@ With ten U.S. patents to his name and over 70 research publications, Patrick has
   "viqar-shariff": {
     name: "Viqar Shariff",
     role: "CHIEF STRATEGY OFFICER",
-    image: "/images/team/viqar.avif",
+    image: "/images/Team/viqar.avif",
     bio: "Viqar Shariff serves as the Chief Strategy Officer of Loop AI Group, a position he assumed in July 2017 after acting as a Board Member and Advisor to the company. He oversees the company's strategic direction, with a primary focus on finance and investor relations.",
     detailedBio: `Before joining Loop AI Group, Viqar co-founded and served as managing partner of SAFA Partners LLC and was a managing partner at Rizvi Traverse, an opportunistic investment fund. He has spearheaded investments in prominent technology companies, including Lyft, Boxed Wholesale, Twitter, Pinterest, Facebook, and Square. Prior to his investment career, Viqar amassed over 11 years of expertise in mergers and acquisitions, notably as a partner at Clifford Chance. His professional journey began at the Department of Justice, Antitrust Division, before transitioning to the private sector.
 
@@ -52,7 +52,7 @@ A graduate of The Johns Hopkins University, Viqar earned his JD, magna cum laude
   "andrea-pitrone": {
     name: "Andrea Pitrone",
     role: "CHIEF CUSTOMER SUCCESS OFFICER AND CHIEF PRODUCT OFFICER",
-    image: "/images/team/andrea.avif",
+    image: "/images/Team/andrea.avif",
     linkedin: "https://www.linkedin.com/in/andrea-pitrone-a012712/",
     bio: "Andrea Pitrone is a visionary leader in cognitive computing, serving as the Chief Customer Success Officer and Chief Product Officer at Loop AI Group. With a deep expertise in AI-driven digital transformation, Andrea is responsible for the global strategy, execution, and oversight of all client projects and pilot implementations. His role ensures the seamless development and integration of cognitive computing applications (\"Q Robots\") across pre- and post-sales phases.",
     detailedBio: `Andrea plays a pivotal role in shaping Loop AI Group's Cognitive Transformation Program, working closely with Strategy Partners to help enterprises adopt AI-powered solutions and re-engineer their core business processes. His expertise ensures that clients maximize value from their Cognitive Roadmaps, achieving tangible business outcomes.
@@ -70,14 +70,14 @@ In addition to his corporate leadership, he has been a member of the Permanent S
   "daniele-preda": {
     name: "Daniele Preda",
     role: "CUSTOMER SUCCESS DIRECTOR",
-    image: "/images/team/daniele_preda.png",
+    image: "/images/Team/daniele_preda.PNG",
     bio: "Daniele Preda serves as the Customer Success Director at Loop AI Group",
     detailedBio: ``,
   },
   "luigi-manzi": {
     name: "Luigi Manzi",
     role: "HEAD OF SOFTWARE ENGINEERING",
-    image: "/images/team/luigi.avif",
+    image: "/images/Team/luigi.avif",
     bio: "Luigi Manzi is the Head of Software Engineering at Loop AI Group, where his deep technical expertise drives the evolution of Loop Q cognitive technology. His leadership ensures that the platform continues to advance in alignment with the company's long-term vision, delivering the award-winning, world-class AI solutions that Loop AI Group is known for.",
     detailedBio: `With responsibility for platform cognitive software development, Luigi oversees the design, supervision, coordination, and execution of application management activities. His focus is on making machine learning and cognitive computing more efficient and user-friendly, ensuring seamless adoption for enterprise clients.
 
@@ -90,7 +90,7 @@ Luigi holds an M.S. in Computer Science from Naples University.`,
   "marco-torresi": {
     name: "Marco Torresi",
     role: "HEAD OF GLOBAL PR AND ANALYST RELATIONS",
-    image: "/images/team/marco.avif",
+    image: "/images/Team/marco.avif",
     bio: "Marco Torresi is the Head of Global PR & Analyst Relations at Loop AI Group, where he leads the planning, development, and execution of the company's public relations strategy. With over a decade of experience in technology PR and corporate communications, he has a proven track record of shaping brand narratives and strengthening industry presence.",
     detailedBio: `Marco has served as a PR Director, managing communications programs for major internet brands, including LinkedIn, Knewton, Message Systems, PartnerUp, and TrustedID. His expertise spans early-stage product launches, market analysis, media relations, corporate positioning, and executive profiling. He also played a key role as a Senior Account Executive, executing global PR initiatives for Compaq and Hewlett-Packard.
 
@@ -101,7 +101,7 @@ He holds a B.A. in Sociology from U.C. Irvine and an MBA from Santa Clara Univer
   "jaana-heikkila": {
     name: "Jaana Heikkila",
     role: "VP, MARKETING",
-    image: "/images/team/jaana.avif",
+    image: "/images/Team/jaana.avif",
     bio: "Jaana Heikkilä, VP of Marketing at Loop AI Group, brings over 20 years of experience in the global technology sector, having held leadership roles across multinational corporations and innovative startups. Originally from Finland, Jaana has played a pivotal role in marketing, global partnerships, and business development for leading technology companies.",
     detailedBio: `She began her career at Nokia and Microsoft, later contributing to the growth of three startup ventures in Stockholm and Helsinki. After relocating to Rome, she worked with Etnoteam (now NTT Italy) on M&A target scouting and international partnerships.
 
@@ -114,7 +114,7 @@ Jaana holds an M.Sc. in Social Sciences from the University of Helsinki and a Bu
   "ilaria-colleoni": {
     name: "Ilaria Colleoni",
     role: "CHIEF EXECUTIVE OFFICER, LOOP AI CONSULTING",
-    image: "/images/team/ilaria.avif",
+    image: "/images/Team/ilaria.avif",
     bio: "Ilaria brings over 20 years of experience in project management, product development, and corporate leadership. She began her career in Bologna, Italy, overseeing the development and roadmap of high-tech products, managing customer relations, and leading a 30-person team.",
     detailedBio: `At TAS Group, a multinational company with 400+ experts across 20 countries, Ilaria played a key role in industrial relations, leading negotiations with Italian trade unions. In her human resources role, she managed the selection process and executive recruitment, shaping the company's leadership talent.
 
@@ -127,7 +127,7 @@ Ilaria holds a degree in Computer Science from Alma Mater Studiorum – Universi
   "tom-davenport": {
     name: "Tom Davenport",
     role: "BOARD OF ADVISORS",
-    image: "/images/team/tom_davenport.avif",
+    image: "/images/Team/tom_davenport.avif",
     bio: "Tom Davenport is the President's Distinguished Professor of Information Technology and Management at Babson College, co-founder of the International Institute for Analytics, a Fellow of the MIT Initiative on the Digital Economy, and a Senior Advisor to Deloitte Analytics.",
     detailedBio: `He teaches analytics and big data in executive programs at Babson, Harvard Business School, MIT Sloan School, and Boston University.
 
@@ -142,7 +142,7 @@ Tom holds a Ph.D. in Social Science from Harvard University and has taught at Ha
   "vinay-chaudhri": {
     name: "Vinay Chaudhri",
     role: "BOARD OF ADVISORS",
-    image: "/images/team/vinay.avif",
+    image: "/images/Team/vinay.avif",
     linkedin: "https://www.linkedin.com/in/vinay-k-chaudhri-849556/",
     bio: "Vinay is the Program Director at the Artificial Intelligence Center of SRI International (formerly known as Stanford Research Institute), one of the world's leading independent research and development organizations.",
     detailedBio: `He leads research and development in knowledge representation, reasoning, and question-answering systems. His work focuses on creating intelligent systems that can understand, reason about, and answer questions using large-scale knowledge bases.
@@ -158,7 +158,7 @@ He earned his Ph.D. in Computer Science from the University of Toronto and began
   "raul-vejar": {
     name: "Raul Véjar",
     role: "BOARD OF ADVISORS",
-    image: "/images/team/raul.avif",
+    image: "/images/Team/raul.avif",
     bio: "Raul Véjar is an experienced executive with extensive experience in the enterprise software industry, specializing in strategic, operational, and management roles. Currently, he advises several early-stage private companies in the enterprise software sector.",
     detailedBio: `Until May 2010, Raul served as EVP and COO of SAP's Business Objects division, where he led the integration of Business Objects following its acquisition by SAP. His leadership was instrumental in successfully merging the two organizations and driving operational excellence.
 
@@ -169,7 +169,7 @@ Raul holds a degree in Computer Science from Instituto Tecnológico y de Estudio
   "massimo-marchiori": {
     name: "Massimo Marchiori",
     role: "BOARD OF ADVISORS",
-    image: "/images/team/massimo.avif",
+    image: "/images/Team/massimo.avif",
     bio: "Massimo Marchiori is a Professor of Computer Science at the University of Padova, Researcher at MIT's Computer Science and Artificial Intelligence Laboratory (CSAIL) within the World Wide Web Consortium (W3C), and Chief Technology Officer of Atomium Culture.",
     detailedBio: `Massimo is the creator of several world-impacting technologies, including P3P (Platform for Privacy Preferences), which became a W3C standard and is now used by millions of websites worldwide. His work has significantly influenced web privacy and security standards.
 
@@ -180,7 +180,7 @@ Massimo's research contributions span multiple areas of computer science, includ
   "tony-trousset": {
     name: "Tony Trousset",
     role: "BOARD OF ADVISORS",
-    image: "/images/team/tony.avif",
+    image: "/images/Team/tony.avif",
     bio: "Tony Trousset brings extensive experience in business development and strategic partnerships to Loop AI Group's Board of Advisors. His expertise in scaling technology companies and building strategic alliances provides valuable guidance for the company's growth initiatives.",
     detailedBio: `With a strong background in enterprise software and technology partnerships, Tony has helped numerous companies expand their market reach and develop strategic relationships with key industry players. His experience in identifying and executing partnership opportunities is particularly valuable for Loop AI Group's expansion into new markets and verticals.
 
@@ -189,7 +189,7 @@ Tony's strategic insights help the company navigate complex business development
   "doug-bewsher": {
     name: "Doug Bewsher",
     role: "BOARD OF ADVISORS",
-    image: "/images/team/doug.avif",
+    image: "/images/Team/doug.avif",
     bio: "Doug Bewsher brings extensive experience in marketing and brand strategy to Loop AI Group's Board of Advisors. His expertise in building and scaling technology brands provides valuable guidance for the company's marketing and communications initiatives.",
     detailedBio: `With a proven track record in technology marketing, Doug has helped numerous companies establish strong brand presence and market positioning. His experience in developing comprehensive marketing strategies and executing successful brand campaigns is particularly valuable for Loop AI Group's growth in the competitive AI market.
 
@@ -198,7 +198,7 @@ Doug's strategic insights help the company develop effective marketing approache
   "claus-karthe": {
     name: "Claus Karthe",
     role: "BOARD OF ADVISORS",
-    image: "/images/team/claus.avif",
+    image: "/images/Team/claus.avif",
     bio: "Claus Karthe brings extensive experience in technology consulting and enterprise solutions to Loop AI Group's Board of Advisors. His deep understanding of enterprise client needs and technology implementation challenges provides valuable guidance for the company's client engagement strategies.",
     detailedBio: `With a strong background in enterprise technology consulting, Claus has helped numerous organizations successfully implement and adopt new technologies. His experience in understanding complex enterprise requirements and translating them into effective technology solutions is particularly valuable for Loop AI Group's approach to serving enterprise clients.
 
