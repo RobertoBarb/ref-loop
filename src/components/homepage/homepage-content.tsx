@@ -278,36 +278,6 @@ export function HomepageContent({ data }: HomepageContentProps) {
         </div>
       </section>
 
-      {/* Footer */}
-      <footer className="py-12 bg-background border-t">
-        <div className="container mx-auto px-4">
-          <div className="flex flex-col items-center justify-center gap-4 text-center">
-            <div className="flex items-center gap-2">
-              {footer.logo ? (
-                <Image
-                  src={footer.logo.asset.url}
-                  alt={footer.logo.alt}
-                  width={24}
-                  height={24}
-                  className="h-6 w-6 object-contain"
-                />
-              ) : (
-                <Image
-                  src="/loopai_Group_Logo_2022.avif"
-                  alt="Loop AI Group"
-                  width={24}
-                  height={24}
-                  className="h-6 w-6 object-contain"
-                />
-              )}
-              <span className="text-xl font-bold">{footer.companyName}</span>
-            </div>
-            <p className="text-sm text-muted-foreground">
-              {footer.copyrightText}
-            </p>
-          </div>
-        </div>
-      </footer>
     </div>
   );
 }

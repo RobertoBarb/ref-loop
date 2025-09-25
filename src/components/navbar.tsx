@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { Bot, Brain, Cloud, HomeIcon, LayersIcon, Sparkles, Users, Building, Award, Play, BarChart3, FileText, Video, Mail, Calendar, X } from "lucide-react";
+import { Bot, Brain, Users, Building, Award, BarChart3, FileText, Video, Mail, Calendar, X } from "lucide-react";
 import { useState, useEffect } from "react";
 
 import Logo from "@/components/navbar-components/logo";
@@ -10,7 +10,6 @@ import { Button } from "@/components/ui/button";
 import {
   NavigationMenu,
   NavigationMenuItem,
-  NavigationMenuLink,
   NavigationMenuList,
 } from "@/components/ui/navigation-menu";
 import {
@@ -20,13 +19,6 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 import { Popover, PopoverContent, PopoverTrigger } from "./ui/popover";
-
-// Navigation links with icons for desktop icon-only navigation
-const navigationLinks = [
-  { href: "/", label: "Home", icon: HomeIcon, active: true },
-  { href: "/dashboard", label: "Dashboard", icon: Bot },
-  { href: "/todo", label: "Todo", icon: LayersIcon },
-];
 
 // Main navigation menu items
 const mainNavigationItems = [
@@ -50,13 +42,15 @@ const mainNavigationItems = [
       { href: "/company/videos", label: "Videos", icon: Video },
       { href: "/company/contact", label: "Contact", icon: Mail },
     ]
-  }
+  },
+  {
+    title: "Success Cases",
+    href: "/success-cases",
+    icon: Award,
+    items: []
+  },
 ];
 
-// Additional navigation items (not in dropdown)
-const additionalNavItems = [
-  { href: "/success-cases", label: "Success Cases", icon: Award },
-];
 
 export default function Navbar() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -141,70 +135,69 @@ export default function Navbar() {
                   </div>
                   <div className="flex-1 overflow-y-auto">
                     <Accordion type="multiple" className="w-full">
-                      {mainNavigationItems.map((section, sectionIndex) => (
-                        <AccordionItem key={sectionIndex} value={`section-${sectionIndex}`} className="border-b">
-                          <AccordionTrigger className="text-lg font-semibold py-4 px-6 hover:no-underline">
-                            {section.title}
-                          </AccordionTrigger>
-                          <AccordionContent className="pb-0">
-                            <div className="space-y-2 px-6">
-                              {section.items.map((item, itemIndex) => {
-                                const Icon = item.icon;
-                                return (
-                                  <Link
-                                    key={itemIndex}
-                                    href={item.href}
-                                    className="flex items-center gap-3 py-3 px-2 text-base hover:bg-accent rounded-lg transition-colors"
-                                    onClick={() => setIsMobileMenuOpen(false)}
-                                  >
-                                    <Icon
-                                      size={20}
-                                      className="text-muted-foreground"
-                                      aria-hidden="true"
-                                    />
-                                    <span className="font-medium">{item.label}</span>
-                                  </Link>
-                                );
-                              })}
+                      {mainNavigationItems.map((section, sectionIndex) => {
+                        // Se ha items, mostra accordion, altrimenti link diretto
+                        if (section.items && section.items.length > 0) {
+                          return (
+                            <AccordionItem key={sectionIndex} value={`section-${sectionIndex}`} className="border-b">
+                              <AccordionTrigger className="text-lg font-semibold py-4 px-6 hover:no-underline">
+                                {section.title}
+                              </AccordionTrigger>
+                              <AccordionContent className="pb-0">
+                                <div className="space-y-2 px-6">
+                                  {section.items.map((item, itemIndex) => {
+                                    const Icon = item.icon;
+                                    return (
+                                      <Link
+                                        key={itemIndex}
+                                        href={item.href}
+                                        className="flex items-center gap-3 py-3 px-2 text-base hover:bg-accent rounded-lg transition-colors"
+                                        onClick={() => setIsMobileMenuOpen(false)}
+                                      >
+                                        <Icon
+                                          size={20}
+                                          className="text-muted-foreground"
+                                          aria-hidden="true"
+                                        />
+                                        <span className="font-medium">{item.label}</span>
+                                      </Link>
+                                    );
+                                  })}
+                                </div>
+                              </AccordionContent>
+                            </AccordionItem>
+                          );
+                        } else {
+                          // Link diretto senza accordion
+                          const Icon = section.icon;
+                          if (!section.href || !Icon) return null;
+                          return (
+                            <div key={sectionIndex} className="border-b">
+                              <Link
+                                href={section.href}
+                                className="flex items-center gap-3 py-4 px-6 text-lg font-semibold hover:bg-accent rounded-lg transition-colors"
+                                onClick={() => setIsMobileMenuOpen(false)}
+                              >
+                                <Icon
+                                  size={20}
+                                  className="text-muted-foreground"
+                                  aria-hidden="true"
+                                />
+                                <span>{section.title}</span>
+                              </Link>
                             </div>
-                          </AccordionContent>
-                        </AccordionItem>
-                      ))}
-                      {/* Additional navigation items */}
-                      <AccordionItem value="additional" className="border-b">
-                        <AccordionTrigger className="text-lg font-semibold py-4 px-6 hover:no-underline">
-                          Additional
-                        </AccordionTrigger>
-                        <AccordionContent className="pb-0">
-                          <div className="space-y-2 px-6">
-                            {additionalNavItems.map((item, itemIndex) => {
-                              const Icon = item.icon;
-                              return (
-                                <Link
-                                  key={`mobile-additional-${itemIndex}`}
-                                  href={item.href}
-                                  className="flex items-center gap-3 py-3 px-2 text-base hover:bg-accent rounded-lg transition-colors"
-                                  onClick={() => setIsMobileMenuOpen(false)}
-                                >
-                                  <Icon
-                                    size={20}
-                                    className="text-muted-foreground"
-                                    aria-hidden="true"
-                                  />
-                                  <span className="font-medium">{item.label}</span>
-                                </Link>
-                              );
-                            })}
-                          </div>
-                        </AccordionContent>
-                      </AccordionItem>
+                          );
+                        }
+                      })}
                     </Accordion>
                   </div>
                   <div className="p-6 border-t">
-                    <Button className="w-full" size="lg" onClick={() => setIsMobileMenuOpen(false)}>
-                      <Calendar className="mr-2 h-5 w-5" />
-                      Book a Demo
-                    </Button>
+                    <Link href="/cognitive-platforms/book-demo" onClick={() => setIsMobileMenuOpen(false)}>
+                      <Button className="w-full" size="lg">
+                        <Calendar className="mr-2 h-5 w-5" />
+                        Book a Demo
+                      </Button>
+                    </Link>
                   </div>
                 </div>
               </div>
@@ -218,48 +211,51 @@ export default function Navbar() {
             {/* Desktop navigation - main menu */}
             <NavigationMenu className="hidden md:flex">
               <NavigationMenuList className="gap-6">
-                {mainNavigationItems.map((section, sectionIndex) => (
-                  <NavigationMenuItem key={sectionIndex}>
-                    <Popover>
-                      <PopoverTrigger asChild>
-                        <Button variant="ghost" className="text-muted-foreground hover:text-primary">
-                          {section.title}
-                        </Button>
-                      </PopoverTrigger>
-                      <PopoverContent align="start" className="w-64 p-2">
-                        <div className="space-y-1">
-                          {section.items.map((item, itemIndex) => {
-                            const Icon = item.icon;
-                            return (
-                              <Link
-                                key={itemIndex}
-                                href={item.href}
-                                className="flex items-center space-x-3 rounded-md px-3 py-2 text-sm hover:bg-accent hover:text-accent-foreground"
-                              >
-                                <Icon className="h-4 w-4" />
-                                <span>{item.label}</span>
-                              </Link>
-                            );
-                          })}
-                        </div>
-                      </PopoverContent>
-                    </Popover>
-                  </NavigationMenuItem>
-                ))}
-                {/* Additional navigation items */}
-                {additionalNavItems.map((item, index) => {
-                  const Icon = item.icon;
-                  return (
-                    <NavigationMenuItem key={`additional-${index}`}>
-                      <Link
-                        href={item.href}
-                        className="flex items-center space-x-2 rounded-md px-3 py-2 text-sm text-muted-foreground hover:text-primary hover:bg-accent"
-                      >
-                        <Icon className="h-4 w-4" />
-                        <span>{item.label}</span>
-                      </Link>
-                    </NavigationMenuItem>
-                  );
+                {mainNavigationItems.map((section, sectionIndex) => {
+                  // Se ha items, mostra dropdown, altrimenti link diretto
+                  if (section.items && section.items.length > 0) {
+                    return (
+                      <NavigationMenuItem key={sectionIndex}>
+                        <Popover>
+                          <PopoverTrigger asChild>
+                            <Button variant="ghost" className="text-muted-foreground hover:text-primary">
+                              {section.title}
+                            </Button>
+                          </PopoverTrigger>
+                          <PopoverContent align="start" className="w-64 p-2">
+                            <div className="space-y-1">
+                              {section.items.map((item, itemIndex) => {
+                                const Icon = item.icon;
+                                return (
+                                  <Link
+                                    key={itemIndex}
+                                    href={item.href}
+                                    className="flex items-center space-x-3 rounded-md px-3 py-2 text-sm hover:bg-accent hover:text-accent-foreground"
+                                  >
+                                    <Icon className="h-4 w-4" />
+                                    <span>{item.label}</span>
+                                  </Link>
+                                );
+                              })}
+                            </div>
+                          </PopoverContent>
+                        </Popover>
+                      </NavigationMenuItem>
+                    );
+                  } else {
+                    // Link diretto senza dropdown
+                    const Icon = section.icon;
+                    if (!section.href || !Icon) return null;
+                    return (
+                      <NavigationMenuItem key={sectionIndex}>
+                        <Link href={section.href}>
+                          <Button variant="ghost" className="text-muted-foreground hover:text-primary">
+                            {section.title}
+                          </Button>
+                        </Link>
+                      </NavigationMenuItem>
+                    );
+                  }
                 })}
               </NavigationMenuList>
             </NavigationMenu>
@@ -268,10 +264,12 @@ export default function Navbar() {
         {/* Right side */}
         <div className="flex items-center gap-2">
           {/* Book a Demo button */}
-          <Button size="sm" className="hidden md:flex">
-            <Calendar className="mr-2 h-4 w-4" />
-            Book a Demo
-          </Button>
+          <Link href="/cognitive-platforms/book-demo">
+            <Button size="sm" className="hidden md:flex">
+              <Calendar className="mr-2 h-4 w-4" />
+              Book a Demo
+            </Button>
+          </Link>
           {/* Theme toggle */}
           <ThemeToggle />
         </div>

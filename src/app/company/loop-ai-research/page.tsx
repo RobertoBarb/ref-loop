@@ -1,7 +1,8 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
-import { ArrowRight, Brain, Globe, Play, Sparkles, Zap, CheckCircle, Award, Users, Building, Clock, FileText, BookOpen } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
@@ -10,440 +11,99 @@ export default function LoopAIResearch() {
   return (
     <div className="min-h-screen bg-background">
       {/* Hero Section */}
-      <section className="relative overflow-hidden bg-gradient-to-br from-background via-background to-primary/5">
+      <section className="relative overflow-hidden bg-gradient-to-br from-background via-background to-primary/5 min-h-[50vh] flex items-center">
         <div className="absolute inset-0 bg-grid-pattern opacity-5"></div>
-        <div className="container mx-auto px-4 py-20 lg:py-32">
+        <div className="absolute inset-0">
+          <Image
+            src="/images/company/research.avif"
+            alt="Loop AI Research"
+            fill
+            className="object-cover opacity-20"
+            priority
+          />
+        </div>
+        <div className="container mx-auto px-4 py-8 md:py-12 lg:py-0 relative z-10">
           <div className="text-center space-y-8">
             <div className="space-y-4">
               <h1 className="text-5xl lg:text-7xl font-bold tracking-tight">
-                Loop AI{" "}
-                <span className="gradient-text">Research (LAIR)</span>
+                <span className="gradient-text">LAIR</span>
               </h1>
+              <h2 className="text-3xl lg:text-4xl font-bold text-muted-foreground">
+                LOOP AI RESEARCH
+              </h2>
               <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-                Advancing the frontiers of artificial intelligence through cutting-edge research, innovation, and collaboration with leading academic institutions.
+                Connect with LAIR to create the future of AI progress. Smarter. Faster. Better.
               </p>
             </div>
-            
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button size="lg" className="pulse-glow">
-                <Play className="mr-2 h-5 w-5" />
-                View Research
-              </Button>
-              <Button variant="outline" size="lg">
-                Learn More
-                <ArrowRight className="ml-2 h-4 w-4" />
-              </Button>
-            </div>
           </div>
         </div>
       </section>
 
-      {/* Research Overview */}
-      <section className="py-20 bg-muted/30">
+      {/* Main Content */}
+      <section className="py-8 bg-muted/30">
         <div className="container mx-auto px-4">
-          <div className="text-center space-y-4 mb-16">
-            <h2 className="text-4xl lg:text-5xl font-bold">
-              Research Overview
-            </h2>
-            <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-              Our research focuses on solving fundamental challenges in artificial intelligence and cognitive computing
-            </p>
-          </div>
-
-          <div className="grid lg:grid-cols-2 gap-12">
-            <div className="space-y-8">
-              <div className="space-y-4">
-                <h3 className="text-2xl font-semibold">Mission</h3>
-                <p className="text-muted-foreground">
-                  To advance the state-of-the-art in artificial intelligence through fundamental research, applied innovation, and collaboration with the global AI research community.
-                </p>
-              </div>
-              
-              <div className="space-y-4">
-                <h3 className="text-2xl font-semibold">Research Areas</h3>
-                <ul className="space-y-2 text-muted-foreground">
-                  <li className="flex items-center space-x-2">
-                    <CheckCircle className="h-4 w-4 text-green-500" />
-                    <span>Cognitive Computing and Human-AI Interaction</span>
-                  </li>
-                  <li className="flex items-center space-x-2">
-                    <CheckCircle className="h-4 w-4 text-green-500" />
-                    <span>Explainable AI and Model Interpretability</span>
-                  </li>
-                  <li className="flex items-center space-x-2">
-                    <CheckCircle className="h-4 w-4 text-green-500" />
-                    <span>Distributed AI and Edge Computing</span>
-                  </li>
-                  <li className="flex items-center space-x-2">
-                    <CheckCircle className="h-4 w-4 text-green-500" />
-                    <span>AI Ethics and Responsible AI</span>
-                  </li>
-                  <li className="flex items-center space-x-2">
-                    <CheckCircle className="h-4 w-4 text-green-500" />
-                    <span>Natural Language Processing and Understanding</span>
-                  </li>
-                </ul>
-              </div>
-            </div>
-            
-            <div className="space-y-8">
-              <div className="space-y-4">
-                <h3 className="text-2xl font-semibold">Key Statistics</h3>
-                <div className="grid grid-cols-2 gap-4">
-                  <div className="text-center">
-                    <div className="text-3xl font-bold text-primary">50+</div>
-                    <div className="text-sm text-muted-foreground">Research Papers</div>
-                  </div>
-                  <div className="text-center">
-                    <div className="text-3xl font-bold text-primary">15+</div>
-                    <div className="text-sm text-muted-foreground">PhD Researchers</div>
-                  </div>
-                  <div className="text-center">
-                    <div className="text-3xl font-bold text-primary">10+</div>
-                    <div className="text-sm text-muted-foreground">University Partnerships</div>
-                  </div>
-                  <div className="text-center">
-                    <div className="text-3xl font-bold text-primary">5+</div>
-                    <div className="text-sm text-muted-foreground">Patents Filed</div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Research Projects */}
-      <section className="py-20">
-        <div className="container mx-auto px-4">
-          <div className="text-center space-y-4 mb-16">
-            <h2 className="text-4xl lg:text-5xl font-bold">
-              Current Research Projects
-            </h2>
-            <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-              Ongoing research initiatives that are pushing the boundaries of AI technology
-            </p>
-          </div>
-
-          <div className="grid lg:grid-cols-2 gap-8">
-            {[
-              {
-                title: "Cognitive Architecture for Enterprise AI",
-                description: "Developing a new cognitive architecture that enables AI systems to reason, learn, and adapt in complex enterprise environments.",
-                status: "Active",
-                duration: "2 years",
-                team: "8 researchers",
-                publications: "3 papers"
-              },
-              {
-                title: "Explainable AI for High-Stakes Decisions",
-                description: "Creating interpretable AI models that can explain their reasoning process for critical business decisions.",
-                status: "Active",
-                duration: "18 months",
-                team: "6 researchers",
-                publications: "2 papers"
-              },
-              {
-                title: "Distributed AI Training at Scale",
-                description: "Researching efficient methods for training large AI models across distributed computing environments.",
-                status: "Active",
-                duration: "1 year",
-                team: "5 researchers",
-                publications: "1 paper"
-              },
-              {
-                title: "Human-AI Collaboration Frameworks",
-                description: "Developing frameworks that enable seamless collaboration between humans and AI systems in enterprise workflows.",
-                status: "Planning",
-                duration: "2 years",
-                team: "10 researchers",
-                publications: "0 papers"
-              }
-            ].map((project, index) => (
-              <Card key={index} className="glass-effect hover:scale-105 transition-transform duration-300">
-                <CardContent className="p-6 space-y-4">
-                  <div className="flex items-start justify-between">
-                    <span className={`px-2 py-1 text-xs rounded-full ${
-                      project.status === 'Active' ? 'bg-green-100 text-green-800' : 'bg-yellow-100 text-yellow-800'
-                    }`}>
-                      {project.status}
-                    </span>
-                    <span className="text-sm text-muted-foreground">{project.duration}</span>
-                  </div>
-                  
-                  <h3 className="text-xl font-semibold">{project.title}</h3>
-                  <p className="text-muted-foreground">{project.description}</p>
-                  
-                  <div className="grid grid-cols-2 gap-4 text-sm">
-                    <div>
-                      <span className="font-medium">Team:</span> {project.team}
-                    </div>
-                    <div>
-                      <span className="font-medium">Publications:</span> {project.publications}
-                    </div>
-                  </div>
-                  
-                  <Button variant="outline" size="sm">
-                    <FileText className="mr-2 h-4 w-4" />
-                    Learn More
-                  </Button>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Publications */}
-      <section className="py-20 bg-muted/30">
-        <div className="container mx-auto px-4">
-          <div className="text-center space-y-4 mb-16">
-            <h2 className="text-4xl lg:text-5xl font-bold">
-              Recent Publications
-            </h2>
-            <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-              Our latest research contributions to the AI community
-            </p>
-          </div>
-
-          <div className="space-y-6">
-            {[
-              {
-                title: "Cognitive Orchestration: A New Paradigm for Enterprise AI Systems",
-                authors: "Dr. Sarah Chen, Dr. Michael Rodriguez, et al.",
-                venue: "NeurIPS 2024",
-                year: "2024",
-                description: "Introducing a new cognitive orchestration framework that enables AI systems to coordinate complex tasks across enterprise environments.",
-                type: "Conference Paper"
-              },
-              {
-                title: "Explainable AI for Financial Risk Assessment: A Case Study",
-                authors: "Dr. Lisa Wang, Dr. Robert Johnson, et al.",
-                venue: "ICML 2024",
-                year: "2024",
-                description: "A comprehensive study on applying explainable AI techniques to financial risk assessment in enterprise settings.",
-                type: "Conference Paper"
-              },
-              {
-                title: "Distributed Training of Large Language Models: Challenges and Solutions",
-                authors: "Dr. Alex Thompson, Dr. Maria Garcia, et al.",
-                venue: "ICLR 2024",
-                year: "2024",
-                description: "Novel approaches to distributed training of large language models with improved efficiency and scalability.",
-                type: "Conference Paper"
-              },
-              {
-                title: "AI Ethics in Enterprise: A Framework for Responsible Deployment",
-                authors: "Dr. Kevin Lee, Dr. Sofia Patel, et al.",
-                venue: "AI & Society",
-                year: "2024",
-                description: "A comprehensive framework for ensuring ethical AI deployment in enterprise environments.",
-                type: "Journal Article"
-              }
-            ].map((publication, index) => (
-              <Card key={index} className="glass-effect hover:scale-105 transition-transform duration-300">
-                <CardContent className="p-6 space-y-4">
-                  <div className="flex items-start justify-between">
-                    <span className="px-2 py-1 bg-primary/10 text-primary text-xs rounded-full">
-                      {publication.type}
-                    </span>
-                    <span className="text-sm text-muted-foreground">{publication.year}</span>
-                  </div>
-                  
-                  <h3 className="text-xl font-semibold">{publication.title}</h3>
-                  <p className="text-sm text-primary font-medium">{publication.authors}</p>
-                  <p className="text-sm text-muted-foreground">{publication.venue}</p>
-                  <p className="text-muted-foreground">{publication.description}</p>
-                  
-                  <div className="flex space-x-2">
-                    <Button variant="outline" size="sm">
-                      <FileText className="mr-2 h-4 w-4" />
-                      Read Paper
-                    </Button>
-                    <Button variant="outline" size="sm">
-                      <BookOpen className="mr-2 h-4 w-4" />
-                      Cite
-                    </Button>
-                  </div>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Academic Partnerships */}
-      <section className="py-20">
-        <div className="container mx-auto px-4">
-          <div className="text-center space-y-4 mb-16">
-            <h2 className="text-4xl lg:text-5xl font-bold">
-              Academic Partnerships
-            </h2>
-            <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-              Collaborating with leading universities and research institutions worldwide
-            </p>
-          </div>
-
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {[
-              {
-                name: "Stanford University",
-                department: "Computer Science",
-                focus: "Natural Language Processing",
-                projects: "3 active projects"
-              },
-              {
-                name: "MIT",
-                department: "CSAIL",
-                focus: "Machine Learning",
-                projects: "2 active projects"
-              },
-              {
-                name: "Carnegie Mellon University",
-                department: "Machine Learning",
-                focus: "AI Ethics",
-                projects: "2 active projects"
-              },
-              {
-                name: "UC Berkeley",
-                department: "EECS",
-                focus: "Distributed Systems",
-                projects: "1 active project"
-              },
-              {
-                name: "Oxford University",
-                department: "Computer Science",
-                focus: "Cognitive AI",
-                projects: "2 active projects"
-              },
-              {
-                name: "University of Toronto",
-                department: "Vector Institute",
-                focus: "Deep Learning",
-                projects: "1 active project"
-              }
-            ].map((partner, index) => (
-              <Card key={index} className="glass-effect hover:scale-105 transition-transform duration-300">
-                <CardContent className="p-6 space-y-4 text-center">
-                  <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto">
-                    <Building className="h-8 w-8 text-primary" />
-                  </div>
-                  <h3 className="text-xl font-semibold">{partner.name}</h3>
-                  <p className="text-primary font-medium">{partner.department}</p>
-                  <p className="text-sm text-muted-foreground">{partner.focus}</p>
-                  <p className="text-xs text-primary">{partner.projects}</p>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Research Team */}
-      <section className="py-20 bg-muted/30">
-        <div className="container mx-auto px-4">
-          <div className="text-center space-y-4 mb-16">
-            <h2 className="text-4xl lg:text-5xl font-bold">
-              Research Team
-            </h2>
-            <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-              Meet the brilliant minds driving our research initiatives
-            </p>
-          </div>
-
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {[
-              {
-                name: "Dr. Sarah Chen",
-                role: "Chief Research Officer",
-                expertise: "Cognitive AI, Human-AI Interaction",
-                education: "PhD Stanford, Postdoc MIT"
-              },
-              {
-                name: "Dr. Michael Rodriguez",
-                role: "Senior Research Scientist",
-                expertise: "Distributed AI, Machine Learning",
-                education: "PhD MIT, MS Stanford"
-              },
-              {
-                name: "Dr. Lisa Wang",
-                role: "Research Director",
-                expertise: "Explainable AI, NLP",
-                education: "PhD Berkeley, MS CMU"
-              },
-              {
-                name: "Dr. Robert Johnson",
-                role: "Principal Research Scientist",
-                expertise: "AI Ethics, Responsible AI",
-                education: "PhD Oxford, Postdoc Harvard"
-              },
-              {
-                name: "Dr. Alex Thompson",
-                role: "Research Scientist",
-                expertise: "Deep Learning, Computer Vision",
-                education: "PhD Toronto, MS Waterloo"
-              },
-              {
-                name: "Dr. Maria Garcia",
-                role: "Research Scientist",
-                expertise: "Natural Language Processing",
-                education: "PhD Stanford, MS Barcelona"
-              }
-            ].map((researcher, index) => (
-              <Card key={index} className="glass-effect hover:scale-105 transition-transform duration-300">
-                <CardContent className="p-6 space-y-4 text-center">
-                  <div className="w-20 h-20 bg-primary/10 rounded-full flex items-center justify-center mx-auto">
-                    <Brain className="h-10 w-10 text-primary" />
-                  </div>
-                  <h3 className="text-xl font-semibold">{researcher.name}</h3>
-                  <p className="text-primary font-medium">{researcher.role}</p>
-                  <p className="text-sm text-muted-foreground">{researcher.expertise}</p>
-                  <p className="text-xs text-muted-foreground">{researcher.education}</p>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* CTA Section */}
-      <section className="py-20 gradient-bg">
-        <div className="container mx-auto px-4 text-center">
           <div className="max-w-4xl mx-auto space-y-8">
-            <h2 className="text-4xl lg:text-5xl font-bold text-white">
-              Join Our Research Mission
+            <Card className="glass-effect">
+              <CardContent className="p-8 space-y-6">
+                <div className="text-center space-y-6">
+                  <h2 className="text-3xl lg:text-4xl font-bold">
+                    Join the Loop AI Research Lab: Shape a World-Changing Future
             </h2>
-            <p className="text-xl text-white/90">
-              Be part of advancing the frontiers of artificial intelligence
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button size="lg" variant="secondary" className="bg-white text-primary hover:bg-white/90">
-                <Zap className="mr-2 h-5 w-5" />
-                View Open Positions
-              </Button>
-              <Button size="lg" variant="outline" className="border-white text-white hover:bg-white/10">
-                <Globe className="mr-2 h-5 w-5" />
-                Learn More
-              </Button>
-            </div>
+                  
+                  <p className="text-lg text-muted-foreground leading-relaxed">
+                    Since 2012, we've been the vanguard of artificial intelligence at LAIR, igniting an industry we pioneered. The scientists and engineers with exceptional abilities who joined us then didn't just observe the revolution—they spearheaded it, delivering groundbreaking research and solutions that tackle humanity's toughest challenges. Today, their legacy powers a vision where technology automates the ordinary, unleashing human potential to achieve the extraordinary on an unprecedented scale.
+                  </p>
+                  
+                  <h3 className="text-2xl font-bold text-primary">
+                    This is your shot to lead the charge.
+                  </h3>
+                  
+                  <p className="text-lg text-muted-foreground leading-relaxed">
+                    We're building the next generation of AI models and products—tools that redefine how the world works and make essentials accessible to all. Whether you're a seasoned innovator or an AI student hungry to shape the future, LAIR is where you turn bold ideas into reality.
+                  </p>
+                  
+                  <h3 className="text-2xl font-bold text-primary">
+                    We're hiring now—join the global AI revolution.
+                  </h3>
+                  
+                  <div className="grid md:grid-cols-2 gap-6 text-left">
+                    <div className="space-y-2">
+                      <h4 className="font-semibold text-primary">Where:</h4>
+                      <p className="text-muted-foreground">
+                        Our offices span the USA and Europe, with remote work and internship opportunities from anywhere in the world.
+                      </p>
+                    </div>
+                    <div className="space-y-2">
+                      <h4 className="font-semibold text-primary">Who:</h4>
+                      <p className="text-muted-foreground">
+                        Visionaries at any stage—professionals, researchers, and students studying AI in any corner of the globe are welcome to apply.
+                      </p>
+                    </div>
+                  </div>
+                  
+                  <h3 className="text-2xl font-bold text-primary">
+                    Submit your application today.
+                  </h3>
+                  
+                  <p className="text-lg text-muted-foreground leading-relaxed">
+                    Our team is eager to see your drive and ingenuity—whether it's for a role or a remote internship. At LAIR, the future isn't predicted—it's forged by those bold enough to seize it.
+                  </p>
+                  
+                  <div className="pt-4">
+                    <Button size="lg" className="pulse-glow" asChild>
+                      <Link href="/company/careers">
+                        APPLY NOW
+                        <ArrowRight className="ml-2 h-5 w-5" />
+                      </Link>
+                    </Button>
+                  </div>
+                  </div>
+                </CardContent>
+              </Card>
           </div>
         </div>
       </section>
 
-      {/* Footer */}
-      <footer className="py-12 bg-background border-t">
-        <div className="container mx-auto px-4">
-          <div className="flex flex-col items-center justify-center gap-4 text-center">
-            <div className="flex items-center gap-2">
-              <Brain className="h-6 w-6 text-primary" />
-              <span className="text-xl font-bold">Loop AI Group</span>
-            </div>
-            <p className="text-sm text-muted-foreground">
-              &copy; {new Date().getFullYear()} Loop AI Group and its affiliates. All Rights Reserved.
-            </p>
-          </div>
-        </div>
-      </footer>
     </div>
   );
 }

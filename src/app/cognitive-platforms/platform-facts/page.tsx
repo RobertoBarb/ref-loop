@@ -259,20 +259,6 @@ export default function PlatformFacts() {
         </div>
       </section>
 
-      {/* Footer */}
-      <footer className="py-12 bg-background border-t">
-        <div className="container mx-auto px-4">
-          <div className="flex flex-col items-center justify-center gap-4 text-center">
-            <div className="flex items-center gap-2">
-              <BarChart3 className="h-6 w-6 text-primary" />
-              <span className="text-xl font-bold">Loop AI Group</span>
-            </div>
-            <p className="text-sm text-muted-foreground">
-              &copy; {new Date().getFullYear()} Loop AI Group and its affiliates. All Rights Reserved.
-            </p>
-          </div>
-        </div>
-      </footer>
     </div>
   );
 }

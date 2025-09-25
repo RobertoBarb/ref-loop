@@ -118,6 +118,13 @@
   body {
     @apply bg-background text-foreground;
   }
+  
+  /* Uniform placeholder styling - hardcoded white */
+  input::placeholder,
+  textarea::placeholder {
+    color: white !important;
+    opacity: 0.4;
+  }
 }
 
 @layer utilities {

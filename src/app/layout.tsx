@@ -4,6 +4,7 @@ import { Inter } from "next/font/google";
 import { NuqsAdapter } from "nuqs/adapters/next/app";
 
 import Navbar from "@/components/navbar";
+import { Footer } from "@/components/footer";
 import { ThemeProvider } from "@/components/theme-provider";
 import { Toaster } from "@/components/ui/sonner";
 import { TRPCReactProvider } from "@/shared/helpers/trpc/client";
@@ -87,6 +88,7 @@ export default function RootLayout({
             >
               <Navbar />
               {children}
+              <Footer />
               <Toaster />
             </ThemeProvider>
           </NuqsAdapter>
