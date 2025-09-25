@@ -7,6 +7,12 @@ import { Calendar, Globe, Mail, Linkedin } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 
+// LinkedIn links for team members
+const linkedinLinks: Record<string, string> = {
+  "andrea-pitrone": "https://www.linkedin.com/in/andrea-pitrone-a012712/",
+  "vinay-chaudhri": "https://www.linkedin.com/in/vinay-k-chaudhri-849556/"
+};
+
 export default function Team() {
   return (
     <div className="min-h-screen bg-background">
@@ -54,7 +60,7 @@ export default function Team() {
                 {
                   name: "Daniele Preda",
                   role: "CUSTOMER SUCCESS DIRECTOR",
-                  image: "/images/team/daniele-preda.avif"
+                  image: "/images/team/daniele_preda.png"
                 },
                 {
                   name: "Luigi Manzi",
@@ -94,15 +100,24 @@ export default function Team() {
                     
                     <div className="flex space-x-2 pt-2">
                       <Button size="sm" variant="outline" className="flex-1 group/btn btn-gradient-outline" asChild>
-                        <Link href={`/company/team/${member.name.toLowerCase().replace(/\s+/g, '-').replace(/[^a-z0-9-]/g, '').replace('phd', '').replace('--', '-')}`}>
+                        <Link href={`/company/team/${member.name.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/\s+/g, '-').replace(/[^a-z0-9-]/g, '').replace('phd', '').replace('--', '-').replace(/-$/, '')}`}>
                           <Mail className="h-4 w-4 mr-1 group-hover/btn:scale-110 transition-transform duration-300" />
                           View Info
                         </Link>
                       </Button>
-                      <Button size="sm" variant="outline" className="flex-1 group/btn btn-gradient-outline">
-                        <Linkedin className="h-4 w-4 mr-1 group-hover/btn:scale-110 transition-transform duration-300" />
-                        LinkedIn
-                      </Button>
+                      {linkedinLinks[member.name.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/\s+/g, '-').replace(/[^a-z0-9-]/g, '').replace('phd', '').replace('--', '-').replace(/-$/, '')] ? (
+                        <Button size="sm" variant="outline" className="flex-1 group/btn btn-gradient-outline" asChild>
+                          <a href={linkedinLinks[member.name.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/\s+/g, '-').replace(/[^a-z0-9-]/g, '').replace('phd', '').replace('--', '-').replace(/-$/, '')]} target="_blank" rel="noopener noreferrer">
+                            <Linkedin className="h-4 w-4 mr-1 group-hover/btn:scale-110 transition-transform duration-300" />
+                            LinkedIn
+                          </a>
+                        </Button>
+                      ) : (
+                        <Button size="sm" variant="outline" className="flex-1 group/btn btn-gradient-outline" disabled>
+                          <Linkedin className="h-4 w-4 mr-1 opacity-50" />
+                          LinkedIn
+                        </Button>
+                      )}
                     </div>
                   </CardContent>
                 </Card>
@@ -169,15 +184,24 @@ export default function Team() {
                     
                     <div className="flex space-x-2 pt-2">
                       <Button size="sm" variant="outline" className="flex-1 group/btn btn-gradient-outline" asChild>
-                        <Link href={`/company/team/${advisor.name.toLowerCase().replace(/\s+/g, '-').replace(/[^a-z0-9-]/g, '').replace('--', '-')}`}>
+                        <Link href={`/company/team/${advisor.name.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/\s+/g, '-').replace(/[^a-z0-9-]/g, '').replace('--', '-').replace(/-$/, '')}`}>
                           <Mail className="h-4 w-4 mr-1 group-hover/btn:scale-110 transition-transform duration-300" />
                           View Info
                         </Link>
                       </Button>
-                      <Button size="sm" variant="outline" className="flex-1 group/btn btn-gradient-outline">
-                        <Linkedin className="h-4 w-4 mr-1 group-hover/btn:scale-110 transition-transform duration-300" />
-                        LinkedIn
-                      </Button>
+                      {linkedinLinks[advisor.name.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/\s+/g, '-').replace(/[^a-z0-9-]/g, '').replace('--', '-').replace(/-$/, '')] ? (
+                        <Button size="sm" variant="outline" className="flex-1 group/btn btn-gradient-outline" asChild>
+                          <a href={linkedinLinks[advisor.name.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/\s+/g, '-').replace(/[^a-z0-9-]/g, '').replace('--', '-').replace(/-$/, '')]} target="_blank" rel="noopener noreferrer">
+                            <Linkedin className="h-4 w-4 mr-1 group-hover/btn:scale-110 transition-transform duration-300" />
+                            LinkedIn
+                          </a>
+                        </Button>
+                      ) : (
+                        <Button size="sm" variant="outline" className="flex-1 group/btn btn-gradient-outline" disabled>
+                          <Linkedin className="h-4 w-4 mr-1 opacity-50" />
+                          LinkedIn
+                        </Button>
+                      )}
                     </div>
                   </CardContent>
                 </Card>
@@ -186,33 +210,6 @@ export default function Team() {
           </div>
         </div>
       </section>
-
-      {/* CTA Section */}
-      <section className="py-8 gradient-bg">
-        <div className="container mx-auto px-4 text-center">
-          <div className="max-w-4xl mx-auto space-y-8">
-            <h2 className="text-4xl lg:text-5xl font-bold text-white">
-              Ready to Get Started?
-            </h2>
-            <p className="text-xl text-white/90">
-              Contact us today to learn how Loop AI Group can transform your enterprise
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Link href="/cognitive-platforms/book-demo">
-                <Button size="lg" variant="secondary" className="bg-white text-primary hover:bg-white/90 btn-gradient-hover">
-                  <Calendar className="mr-2 h-5 w-5" />
-                  Book a Demo
-                </Button>
-              </Link>
-              <Button size="lg" variant="outline" className="border-white text-white hover:bg-white/10 group/btn btn-gradient-outline">
-                <Globe className="mr-2 h-5 w-5 group-hover/btn:scale-110 transition-transform duration-300" />
-                Learn More
-              </Button>
-            </div>
-          </div>
-        </div>
-      </section>
-
     </div>
   );
 }
