@@ -44,6 +44,9 @@ async function createHomepageData() {
   // Carica l'immagine AI Chaos
   const chaosImage = await uploadImage('ai caos.avif', 'AI Chaos - Take Control');
   
+  // Carica l'immagine dell'orchestra aggiornata
+  const orchestraImage = await uploadImage('agent_orchestra_home_page_enlarged.avif', 'Loop AI Agent Orchestra');
+  
   return {
     _type: 'homepage',
     title: 'Homepage',
@@ -62,6 +65,7 @@ async function createHomepageData() {
         text: 'Learn More',
         link: '/cognitive-platforms/loop-ai-agents-orchestra',
       },
+      ...(orchestraImage && { heroImage: orchestraImage }),
     },
     aiChaosSection: {
       title: 'Take Control and Cut Through the AI Chaos',
@@ -95,21 +99,21 @@ async function createHomepageData() {
       ],
     },
     videoSection: {
-      title: 'See Loop AI Agents Orchestra in Action',
+      title: 'AI Agents Management Made Simple',
       subtitle: 'Discover how leading enterprises are transforming their operations with AI Agents',
       youtubeVideoId: 'qbuutZhOxrc',
       videoTitle: 'Loop AI Group - The AI Agents Platform',
     },
     ctaSection: {
-      title: 'AI Agents Management Made Simple',
-      subtitle: 'Seamlessly deploy, scale, and manage all your AI solutions and AI Agents across multiple vendors from one unified platform.',
+      title: 'Take Control of Your AI Agents Today',
+      subtitle: 'Join leading enterprises already optimizing with Loop AI Agents Orchestra',
       primaryButton: {
         text: 'Get Started',
         link: '/cognitive-platforms/book-demo',
       },
       secondaryButton: {
         text: 'Explore Solutions',
-        link: '/cognitive-platforms',
+        link: '/cognitive-platforms/loop-ai-agents-orchestra',
       },
     },
     footer: {

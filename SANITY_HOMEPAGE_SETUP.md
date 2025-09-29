@@ -47,7 +47,7 @@ Poi vai su `http://localhost:3000/studio`
 ### 3. Popolare con Dati di Default (Opzionale)
 ```bash
 # Esegui lo script di seed
-npx tsx src/sanity/lib/seed-homepage.ts
+npx tsx src/sanity/lib/seed-sanity.ts
 ```
 
 ### 4. Personalizzare il Contenuto
