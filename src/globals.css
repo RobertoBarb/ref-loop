@@ -253,4 +253,88 @@
     transform: translateY(-2px);
     box-shadow: 0 8px 25px oklch(0.45 0.15 260 / 0.3);
   }
+  
+  /* Progress bar animations - from inside to outside */
+  .animate-fill-left {
+    animation: fill-right-to-left 2s ease-out forwards;
+    transform-origin: right;
+  }
+  
+  .animate-fill-right {
+    animation: fill-left-to-right 2s ease-out forwards;
+    transform-origin: left;
+  }
+  
+  @keyframes fill-right-to-left {
+    0% {
+      width: 0%;
+      transform: translateX(100%);
+    }
+    100% {
+      width: var(--fill-width, 100%);
+      transform: translateX(0%);
+    }
+  }
+  
+  @keyframes fill-left-to-right {
+    0% {
+      width: 0%;
+      transform: translateX(-100%);
+    }
+    100% {
+      width: var(--fill-width, 100%);
+      transform: translateX(0%);
+    }
+  }
+  
+  /* Fixed width progress bars for cost comparison */
+  .progress-container {
+    width: 500px;
+    height: 64px;
+    background-color: #374151;
+    border-radius: 8px;
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .progress-bar-left {
+    position: absolute;
+    top: 0;
+    height: 100%;
+    background-color: #f97316;
+    border-radius: 8px;
+    animation: fill-from-right 2s ease-out forwards;
+  }
+  
+  .progress-bar-right {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    background: linear-gradient(135deg, #3b82f6, #1d4ed8);
+    border-radius: 8px;
+    animation: fill-from-left 2s ease-out forwards;
+  }
+  
+  @keyframes fill-from-right {
+    0% {
+      width: 0%;
+      right: 0;
+      left: auto;
+    }
+    100% {
+      width: var(--left-width, 85%);
+      right: 0;
+      left: auto;
+    }
+  }
+  
+  @keyframes fill-from-left {
+    0% {
+      width: 0%;
+    }
+    100% {
+      width: var(--right-width, 3%);
+    }
+  }
 }

@@ -71,18 +71,24 @@ export function HomepageContent({ data }: HomepageContentProps) {
               </div>
               
               <div className="flex flex-col sm:flex-row gap-4">
-                {heroSection.primaryButton && (
+                {(heroSection.primaryButton ?? {
+                  text: 'Book a Demo',
+                  link: '/cognitive-platforms/book-demo',
+                }) && (
                   <Button size="lg" className="pulse-glow" asChild>
-                    <Link href={heroSection.primaryButton.link}>
+                    <Link href={heroSection.primaryButton?.link ?? '/cognitive-platforms/book-demo'}>
                       <Play className="mr-2 h-5 w-5" />
-                      {heroSection.primaryButton.text}
+                      {heroSection.primaryButton?.text ?? 'Book a Demo'}
                     </Link>
                   </Button>
                 )}
-                {heroSection.secondaryButton && (
+                {(heroSection.secondaryButton ?? {
+                  text: 'Learn More',
+                  link: '/cognitive-platforms/loop-ai-agents-orchestra',
+                }) && (
                   <Button variant="outline" size="lg" asChild>
-                    <Link href={heroSection.secondaryButton.link}>
-                      {heroSection.secondaryButton.text}
+                    <Link href={heroSection.secondaryButton?.link ?? '/cognitive-platforms/loop-ai-agents-orchestra'}>
+                      {heroSection.secondaryButton?.text ?? 'Learn More'}
                       <ArrowRight className="ml-2 h-4 w-4" />
                     </Link>
                   </Button>
@@ -103,7 +109,7 @@ export function HomepageContent({ data }: HomepageContentProps) {
                       />
                     ) : (
                       <Image 
-                        src="/images/orchestra.avif" 
+                        src="/images/agent_orchestra_home_page_enlarged.avif" 
                         alt="Loop AI Agent Orchestra" 
                         fill
                         className="object-cover rounded-xl"

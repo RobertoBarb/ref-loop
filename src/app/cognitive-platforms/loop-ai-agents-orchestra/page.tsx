@@ -13,7 +13,7 @@ export default function LoopAIAgentsOrchestra() {
       {/* Hero Section */}
       <section className="relative overflow-hidden bg-gradient-to-br from-background via-background to-primary/5">
         <div className="absolute inset-0 bg-grid-pattern opacity-5"></div>
-        <div className="container mx-auto px-4 py-20 lg:py-32">
+        <div className="container mx-auto px-4 py-20 lg:py-0">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div className="space-y-8">
               <div className="space-y-4">
@@ -31,7 +31,7 @@ export default function LoopAIAgentsOrchestra() {
               <div className="glass-effect rounded-2xl p-8 hover:scale-105 transition-transform duration-300">
                 <div className="aspect-square bg-gradient-to-br from-primary/20 to-accent/20 rounded-xl flex items-center justify-center overflow-hidden">
                   <Image 
-                    src="/images/orchestra.avif" 
+                    src="/images/agent_orchestra_home_page_enlarged.avif" 
                     alt="Loop AI Agent Orchestra" 
                     fill
                     className="object-cover rounded-xl"
