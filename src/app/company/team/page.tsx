@@ -6,14 +6,34 @@ import { Mail, Linkedin } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
-
-// LinkedIn links for team members
-const linkedinLinks: Record<string, string> = {
-  "andrea-pitrone": "https://www.linkedin.com/in/andrea-pitrone-a012712/",
-  "vinay-chaudhri": "https://www.linkedin.com/in/vinay-k-chaudhri-849556/"
-};
+import { useTeam } from "@/hooks/use-team";
 
 export default function Team() {
+  const { data, isLoading, error } = useTeam();
+
+  if (isLoading) {
+    return (
+      <div className="min-h-screen bg-background flex items-center justify-center">
+        <div className="text-center space-y-4">
+          <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-primary mx-auto"></div>
+          <p className="text-muted-foreground">Loading...</p>
+        </div>
+      </div>
+    );
+  }
+
+  if (error || !data) {
+    return (
+      <div className="min-h-screen bg-background flex items-center justify-center">
+        <div className="text-center space-y-4">
+          <h1 className="text-2xl font-bold text-destructive">Error Loading Team</h1>
+          <p className="text-muted-foreground">
+            {error?.message || "Unable to load team content. Please try again later."}
+          </p>
+        </div>
+      </div>
+    );
+  }
   return (
     <div className="min-h-screen bg-background">
       {/* Hero Section */}
@@ -23,8 +43,13 @@ export default function Team() {
           <div className="text-center space-y-8">
             <div className="space-y-4">
               <h1 className="text-5xl lg:text-7xl font-bold tracking-tight">
-                Executive{" "}
-                <span className="gradient-text">Team</span>
+                {data.heroSection.title.split(' ').map((word, index) => 
+                  word === 'Team' ? (
+                    <span key={index} className="gradient-text">{word} </span>
+                  ) : (
+                    <span key={index}>{word} </span>
+                  )
+                )}
               </h1>
             </div>
           </div>
@@ -36,78 +61,34 @@ export default function Team() {
         <div className="container mx-auto px-4">
           <div className="max-w-6xl mx-auto">
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {[
-                {
-                  name: "GM Calafiore",
-                  role: "PRESIDENT, FOUNDER",
-                  image: "/images/Team/GM.avif"
-                },
-                {
-                  name: "Patrick Ehlen, PhD",
-                  role: "CHIEF AI ADVISOR",
-                  image: "/images/Team/Patrick_new.avif"
-                },
-                {
-                  name: "Viqar Shariff",
-                  role: "CHIEF STRATEGY OFFICER",
-                  image: "/images/Team/viqar.avif"
-                },
-                {
-                  name: "Andrea Pitrone",
-                  role: "CHIEF OPERATING OFFICER",
-                  image: "/images/Team/andrea.avif"
-                },
-                {
-                  name: "Daniele Preda",
-                  role: "CUSTOMER SUCCESS DIRECTOR",
-                  image: "/images/Team/daniele_preda.PNG"
-                },
-                {
-                  name: "Luigi Manzi",
-                  role: "HEAD OF SOFTWARE ENGINEERING",
-                  image: "/images/Team/luigi.avif"
-                },
-                {
-                  name: "Marco Torresi",
-                  role: "HEAD OF GLOBAL PR",
-                  image: "/images/Team/marco.avif"
-                },
-                {
-                  name: "Jaana Heikkila",
-                  role: "VP, MARKETING",
-                  image: "/images/Team/jaana.avif"
-                },
-                {
-                  name: "Ilaria Colleoni",
-                  role: "CHIEF EXECUTIVE OFFICER",
-                  image: "/images/Team/ilaria.avif"
-                }
-              ].map((member, index) => (
+              {data.executiveTeam.members.map((member, index) => (
                 <Card key={index} className="glass-effect hover:scale-105 transition-transform duration-300">
                   <CardContent className="p-6 space-y-4">
                     <div className="text-center">
-                      <div className="w-40 h-40 mx-auto mb-4 relative overflow-hidden rounded-full">
-                        <Image
-                          src={member.image}
-                          alt={member.name}
-                          fill
-                          className="object-cover"
-                        />
-                      </div>
+                      {member.image && (
+                        <div className="w-40 h-40 mx-auto mb-4 relative overflow-hidden rounded-full">
+                          <Image
+                            src={member.image.asset.url}
+                            alt={member.image.alt}
+                            fill
+                            className="object-cover"
+                          />
+                        </div>
+                      )}
                       <h3 className="text-xl font-semibold">{member.name}</h3>
                       <p className="text-primary font-medium text-sm">{member.role}</p>
                     </div>
                     
                     <div className="flex space-x-2 pt-2">
                       <Button size="sm" variant="outline" className="flex-1 group/btn btn-gradient-outline" asChild>
-                        <Link href={`/company/team/${member.name.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/\s+/g, '-').replace(/[^a-z0-9-]/g, '').replace('phd', '').replace('--', '-').replace(/-$/, '')}`}>
+                        <Link href={`/company/team/${member.slug.current}`}>
                           <Mail className="h-4 w-4 mr-1 group-hover/btn:scale-110 transition-transform duration-300" />
                           View Info
                         </Link>
                       </Button>
-                      {linkedinLinks[member.name.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/\s+/g, '-').replace(/[^a-z0-9-]/g, '').replace('phd', '').replace('--', '-').replace(/-$/, '')] ? (
+                      {member.linkedinUrl ? (
                         <Button size="sm" variant="outline" className="flex-1 group/btn btn-gradient-outline" asChild>
-                          <a href={linkedinLinks[member.name.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/\s+/g, '-').replace(/[^a-z0-9-]/g, '').replace('phd', '').replace('--', '-').replace(/-$/, '')]} target="_blank" rel="noopener noreferrer">
+                          <a href={member.linkedinUrl} target="_blank" rel="noopener noreferrer">
                             <Linkedin className="h-4 w-4 mr-1 group-hover/btn:scale-110 transition-transform duration-300" />
                             LinkedIn
                           </a>

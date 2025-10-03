@@ -18,6 +18,7 @@
     "sanity:seed": "node scripts/seed-sanity.js",
     "sanity:seed:ts": "tsx scripts/seed-sanity.ts",
     "sanity:seed:simple": "node scripts/simple-seed.mjs",
+    "sanity:seed:all": "tsx scripts/comprehensive-seed-sanity.ts",
     "ui-add": "pnpm dlx shadcn add && prettier src --write --list-different",
     "dev": "next dev",
     "format:check": "prettier --check . !pnpm-lock.yaml !package.json",
