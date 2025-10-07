@@ -11,14 +11,6 @@ export interface HomepageData {
   heroSection: {
     title: string
     subtitle: string
-    primaryButton?: {
-      text: string
-      link: string
-    }
-    secondaryButton?: {
-      text: string
-      link: string
-    }
     heroImage?: {
       asset: {
         _id: string
@@ -85,8 +77,11 @@ export function useHomepage() {
       const data = await client.fetch(homepageQuery)
       return data
     },
-    staleTime: process.env.NODE_ENV === 'development' ? 30 * 1000 : 5 * 60 * 1000, // 30 seconds in dev, 5 minutes in production
-    refetchOnWindowFocus: process.env.NODE_ENV === 'development', // Refetch on focus in development
+    staleTime: process.env.NODE_ENV === 'development' ? 60 * 1000 : 10 * 60 * 1000, // 1 minute in dev, 10 minutes in production
+    refetchOnWindowFocus: false, // Disable refetch on focus to improve performance
+    refetchOnMount: false, // Don't refetch if data is already cached
+    retry: 3, // Retry failed requests
+    retryDelay: (attemptIndex) => Math.min(1000 * 2 ** attemptIndex, 30000), // Exponential backoff
   })
 }
 

@@ -6,6 +6,10 @@ import { teamMember } from './team-member'
 import { successCases } from './success-cases'
 import { successCase } from './success-case'
 import { cognitivePlatforms } from './cognitive-platforms'
+import { loopAiAgentsOrchestra } from './loop-ai-agents-orchestra'
+import { loopQ } from './loop-q'
+import { platformFacts } from './platform-facts'
+import { bookDemo } from './book-demo'
 import { contact } from './contact'
 import { careers } from './careers'
 import { videos } from './videos'
@@ -21,6 +25,10 @@ export const schema: { types: SchemaTypeDefinition[] } = {
     successCases,
     successCase,
     cognitivePlatforms,
+    loopAiAgentsOrchestra,
+    loopQ,
+    platformFacts,
+    bookDemo,
     contact,
     careers,
     videos,

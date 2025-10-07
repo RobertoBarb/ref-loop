@@ -76,14 +76,6 @@ async function createHomepageData() {
     heroSection: {
       title: 'The Leading AI Agents Platform',
       subtitle: 'Boost your workforce building your own enterprise AI Agents that deliver real work using any ML/LLM, your legacy systems and your infrastructure.',
-      primaryButton: {
-        text: 'Book a Demo',
-        link: '/cognitive-platforms/book-demo',
-      },
-      secondaryButton: {
-        text: 'Learn More',
-        link: '/cognitive-platforms/loop-ai-agents-orchestra',
-      },
       ...(orchestraImage && { heroImage: orchestraImage }),
     },
     aiChaosSection: {
@@ -1210,17 +1202,567 @@ async function createIndividualSuccessCases() {
   return createdCases;
 }
 
+// Loop AI Agents Orchestra data
+async function createLoopAiAgentsOrchestraData() {
+  const orchestraImage = await uploadImage('agent_orchestra_home_page_enlarged.avif', 'Loop AI Agent Orchestra');
+  const trainingImage1 = await uploadImage('Loop AI Agent Orchestra - Training Models.avif', 'Loop AI Agent Orchestra - Training Models');
+  const trainingImage2 = await uploadImage('loopai_orchestra-training_model_2.avif', 'Loop AI Agent Orchestra - Training Models 2');
+  const llmMlBuildingImage = await uploadImage('Loop AI Agents Orchestra - LLM-ML building with no coding.avif', 'Loop AI Agents Orchestra - LLM-ML building with no coding');
+  const llmMlComparisonImage = await uploadImage('Loop AI Agents Orchestra - LLM-ML comparison.avif', 'Loop AI Agents Orchestra - LLM-ML comparison');
+  const responsibleAiImage = await uploadImage('loop ai agent orchestra - responsible ai.avif', 'Loop AI Agent Orchestra - Responsible AI');
+
+  return {
+    _type: 'loopAiAgentsOrchestra',
+    title: 'Loop AI Agents Orchestra',
+    seo: {
+      metaTitle: 'Loop AI Agents Orchestra - The Leading AI Agents Platform',
+      metaDescription: 'Loop Agent Orchestra serves as an enterprise AI single agent or multi-agent development and orchestration hub, integrating four foundational layers.',
+    },
+    heroSection: {
+      title: 'The AI Agents Platform',
+      subtitle: 'Loop Agent Orchestra serves as an enterprise AI single agent or multi-agent development and orchestration hub, integrating four foundational layers',
+      ...(orchestraImage && { heroImage: orchestraImage }),
+    },
+    architecturalPillars: {
+      title: 'Architectural Pillars',
+      subtitle: 'Four foundational layers that power enterprise AI orchestration',
+      pillars: [
+        {
+          title: 'Full Integration with your Legacy Systems and Data',
+          icon: 'Database',
+          features: [
+            {
+              title: 'APIs, Connectors and Virtual Agents',
+              description: 'Easily integrates with your enterprise systems via APIs, ready-made connectors, or virtual agents that interact with your visual interfaces.',
+            },
+            {
+              title: 'Data Pipeline',
+              description: 'ETL (Extract, Transform, Load) workflows to normalize heterogeneous data inputs for agent consumption.',
+            },
+            {
+              title: 'Protocol Support',
+              description: 'Compatibility with SOAP, Kafka, and MQTT for real-time event streaming.',
+            },
+          ],
+        },
+        {
+          title: 'Compute Infrastructure Orchestration',
+          icon: 'Cloud',
+          features: [
+            {
+              title: 'Cloud Agnosticism',
+              description: 'Deploy Loop Agent Orchestra and Agents on your preferred cloud service or on-premise for full control and security.',
+            },
+            {
+              title: 'Resource Management',
+              description: 'GPU/TPU scheduling, containerized inference endpoints, distributed training, load balancing and agent orchestration.',
+            },
+            {
+              title: 'Latency Optimization',
+              description: 'Load balancing and edge caching for low-latency inference in hybrid environments.',
+            },
+          ],
+        },
+        {
+          title: 'Algorithmic Integration & Optimization',
+          icon: 'Brain',
+          features: [
+            {
+              title: 'LLM/ML Agnosticism',
+              description: 'Besides the free, natively integrated Loop Q, it supports TensorFlow, PyTorch, ONNX, Hugging Face Transf., and any native ML/LLM.',
+            },
+            {
+              title: 'Automated Benchmarking',
+              description: 'CAPE engine evaluates latency, accuracy, KPI and cost-per-inference metrics across LLM/ML providers or locally run open source models.',
+            },
+            {
+              title: 'LLM/ML Hot Swap',
+              description: 'Visually compare any new LLM/ML in ghost mode against your production data and models, then seamlessly hot-swap with zero downtime.',
+            },
+          ],
+        },
+        {
+          title: 'Low-Code AI Control Center for Teams',
+          icon: 'Settings',
+          features: [
+            {
+              title: 'Simple Conversational UI',
+              description: 'Conversational UI for training, model comparison, AI agent dev., deployment and monitoring with complete feedback and control.',
+            },
+            {
+              title: 'Built for Teams',
+              description: 'Build > Iterate > Deploy > Monitor with project management and granular permissions for internal teams and external consultants.',
+            },
+            {
+              title: 'Observability and Analytics',
+              description: 'Detailed insights into the quality, efficiency, drift, and ROI of your AI agents through technical and business dashboards and alerts.',
+            },
+          ],
+        },
+      ],
+    },
+    vendorAgnosticSection: {
+      title: 'Vendor Agnostic AI Control Center for AI Agent Lifecycle Management',
+      description: 'Loop AI Agents Orchestra is a powerful and scalable framework designed to simplify the development, deployment, optimization, and monitoring of AI agents. Since 2019, the platform has been validated in mission-critical production environments with Fortune 100 organizations.',
+      futureProofTitle: 'Future Proof AI Control Center',
+      futureProofDescription: 'Loop AI Agents Orchestra is a robust, scalable framework engineered to streamline the development, deployment, runtime optimization and monitoring of your AI agents. Leveraging a vendor-agnostic architecture, it integrates heterogeneous AI technologies—spanning commercial APIs, open-source libraries, and proprietary algorithms—to deliver a lifecycle management solution that ensures maximum computational efficiency, algorithmic performance, and cost optimization across all AI agent components.',
+      technicalDefinitionTitle: 'AI Agents: Technical Definition',
+      technicalDefinitionDescription: 'AI agents are autonomous computational entities engineered to fulfill defined job roles by executing end-to-end workflows within one or more enterprise legacy systems, mirroring the capabilities of human employees. These agents handle tasks ranging from discrete automation to complex, multi-step processes through modular, interoperable components.',
+    },
+    algorithmSelectionSection: {
+      title: 'Tackling Algorithm Selection Complexity',
+      description: 'This means that your company gains actual control over its suppliers and adopt not just a single vendor, but the best vendor for each block of its application. The proliferation of paid and open-source ML/LLM providers creates a combinatorial explosion of choices.',
+      features: [
+        {
+          title: 'Performance Telemetry',
+          description: 'Real-time monitoring of accuracy, scores, perplexity, inference time, resource utilization and actual KPIs.',
+        },
+        {
+          title: 'Cost Analysis',
+          description: 'Normalized cost-per-operation metrics across API providers, self-hosted models and AI Agents.',
+        },
+        {
+          title: 'Lifecycle Automation',
+          description: 'Continuous retraining, provider A/B testing, and deployment of superior algorithms without manual intervention.',
+        },
+      ],
+      trainingImages: [
+        ...(trainingImage1 ? [{ image: trainingImage1 }] : []),
+        ...(trainingImage2 ? [{ image: trainingImage2 }] : []),
+      ],
+    },
+    technicalHeritageSection: {
+      title: 'Technical Heritage Since 2012',
+      description: 'Validated in mission-critical production environments with Fortune 100 organizations since 2019, Loop AI Agents Orchestra is built by Loop AI Group—a pioneer in enterprise AI since 2012.',
+      features: [
+        {
+          title: 'Algorithmic Efficiency',
+          description: 'Reduce inference costs by up to 40% through automated provider selection.',
+          icon: 'TrendingUp',
+        },
+        {
+          title: 'Deployment Velocity',
+          description: 'Prototype-to-production in under 72 hours with pre-integrated connectors.',
+          icon: 'Clock',
+        },
+        {
+          title: 'Vendor Neutrality',
+          description: 'Avoid lock-in with a pluggable, multi-vendor runtime environment.',
+          icon: 'Shield',
+        },
+        {
+          title: 'Real-Time Adaptability',
+          description: 'Sub-millisecond algorithm swaps via service orchestration.',
+          icon: 'Zap',
+        },
+        {
+          title: 'Observability',
+          description: 'Integrated dashboards for latency, throughput, and model drift monitoring.',
+          icon: 'BarChart3',
+        },
+      ],
+      llmMlImages: [
+        ...(llmMlBuildingImage ? [{ image: llmMlBuildingImage }] : []),
+        ...(llmMlComparisonImage ? [{ image: llmMlComparisonImage }] : []),
+      ],
+    },
+    responsibleAiSection: {
+      title: 'Responsible AI and Explainability with Loop Orchestra',
+      features: [
+        {
+          title: 'EU AI Act Compliance Simplified',
+          description: 'Loop Orchestra aligns seamlessly with the EU AI Act by integrating robust security features such as end-to-end encryption (TLS 1.3) and role-based access control (RBAC).',
+        },
+        {
+          title: 'Streamlined Development with Ethical Integration',
+          description: 'The platform enhances efficiency by embedding responsible AI practices into the development process.',
+        },
+        {
+          title: 'Building Trust through Explainability',
+          description: 'Loop Orchestra fosters trust with explainable AI features, including methods like LIME and SHAP, which clarify how models make predictions.',
+        },
+        {
+          title: 'A Unified Solution for 2025 and Beyond',
+          description: 'By combining compliance, streamlined development, and trust-building features, Loop Orchestra empowers enterprises to create cognitive applications.',
+        },
+      ],
+      ...(responsibleAiImage && { responsibleAiImage }),
+    },
+    technicalSpecificationsSection: {
+      title: 'Technical Specifications Summary',
+      specifications: [
+        {
+          title: 'Visual Low-Code Workflows',
+          description: 'AI agents are created using visual blocks, each exposing its own API for potential reuse in other AI agents.',
+        },
+        {
+          title: 'Data Connectors',
+          description: 'Available for most systems including major databases, Storage systems, cloud repositories',
+        },
+        {
+          title: 'Model and Vector Library',
+          description: 'A library for managing model versions, tracking status, team permission and ensuring smooth deployment in production.',
+        },
+        {
+          title: 'Algorithm and Code Library',
+          description: 'A library for managing algorithms, code, and AI agents, including versioning, metrics, parameters, and artifacts.',
+        },
+        {
+          title: 'Model Drift and Monitoring',
+          description: 'Tracks the performance and accuracy of deployed models over time, detecting shifts in data distribution or model behavior.',
+        },
+        {
+          title: 'Explainable ML',
+          description: 'Attention mechanisms to highlight important input features, post-hoc methods like LIME and SHAP.',
+        },
+        {
+          title: 'LLM Deployments',
+          description: 'Designed to simplify access to both SaaS and open-source LLM models, this platform provides a unified interface.',
+        },
+        {
+          title: 'Evaluation Module',
+          description: 'Built for comprehensive analysis of ML/LLM model and AI agent performance, this toolkit enables objective comparisons.',
+        },
+        {
+          title: 'Projects',
+          description: 'Standardize the packaging of ML models and AI agent code, visual workflows, and artifacts.',
+        },
+        {
+          title: 'Computing Infrastructure',
+          description: 'The computing resources are configured once by system engineers and can then be used across any project.',
+        },
+        {
+          title: 'Deployment Modes',
+          description: 'Dockerized microservices, serverless functions, or bare-metal clusters.',
+        },
+        {
+          title: 'Scalability',
+          description: 'Horizontal scaling with Kubernetes; up to 10,000 concurrent agents per cluster (tested).',
+        },
+        {
+          title: 'Security',
+          description: 'End-to-end encryption (TLS 1.3), RBAC, and audit logging for compliance (GDPR, CCPA).',
+        },
+      ],
+    },
+    ctaSection: {
+      title: 'Engineer Your AI Future',
+      description: 'Loop AI Agents Orchestra is a battle-tested platform, developed since 2012, for organizations building and scaling a digital workforce of AI agents.',
+      primaryButton: {
+        text: 'SUCCESS CASES',
+        link: '/success-cases',
+      },
+      secondaryButton: {
+        text: 'BOOK A DEMO',
+        link: '/cognitive-platforms/book-demo',
+      },
+    },
+    videoSection: {
+      title: 'AI Agent Management Made Simple',
+      youtubeVideoId: 'qbuutZhOxrc',
+      videoTitle: 'Loop AI Group - The AI Agents Platform',
+    },
+    finalCtaSection: {
+      title: 'Your Next AI Agent is Minutes Away. No Coding Required.',
+      description: 'Smart. Fast. Tireless. Build your competitive digital workforce today from prototype to production.',
+      primaryButton: {
+        text: 'BOOK A DEMO',
+        link: '/cognitive-platforms/book-demo',
+      },
+    },
+  };
+}
+
+// Loop Q data
+async function createLoopQData() {
+  const logo = await uploadImage('logos/loopQ_Logo_2022 - Large.png', 'Loop Q Cognitive Platform');
+  const unsupervisedLearningImage1 = await uploadImage('loopQ/Loop Q Unsupervised Learning.avif', 'Loop Q Unsupervised Learning');
+  const unsupervisedLearningImage2 = await uploadImage('loopQ/loop Q unsupervised learning_2.avif', 'Loop Q Unsupervised Learning 2');
+  const stackImage = await uploadImage('loopQ/Loop Q stack.avif', 'Loop Q Stack Architecture');
+  const processImage = await uploadImage('loopQ/process.gif', 'Loop Q Process');
+
+  return {
+    _type: 'loopQ',
+    title: 'Loop Q Cognitive Platform',
+    seo: {
+      metaTitle: 'Loop Q Cognitive Platform - Unsupervised Learning Technology',
+      metaDescription: 'Loop Q Cognitive Platform, integrated into Loop Agent Orchestra, features a unique unsupervised learning technology powered by a dedicated hardware and software appliance.',
+    },
+    heroSection: {
+      ...(logo && { logo }),
+      title: 'The Loop Q Cognitive Platform',
+      description: 'Loop Q Cognitive Platform, integrated into Loop Agent Orchestra, features a unique unsupervised learning technology powered by a dedicated hardware and software appliance. Deployed on-premise within your firewall or in a secure cloud environment, it autonomously learns and reasons across 100% of structured and unstructured data—without human programming, labeling, guidance, or supervision.',
+      subDescription: 'Designed using principles of neuroscience and cognitive science, Loop Q has human-capacity abilities to autonomously connect content and context, unlocking the transformative power of your enterprise data. These insights power cognitive robotic process automation, cognitive software robots, and other cognitively-enabled applications.',
+      images: [
+        ...(unsupervisedLearningImage1 ? [{ image: unsupervisedLearningImage1 }] : []),
+        ...(unsupervisedLearningImage2 ? [{ image: unsupervisedLearningImage2 }] : []),
+      ],
+    },
+    keyDifferentiatorsSection: {
+      title: 'Key Differentiators',
+      subtitle: 'FAST TO DEPLOY. EASY TO MAINTAIN. FULLY UNSUPERVISED. CLOUD or ON PREMISE.',
+      description: 'Seeing is believing. Get technical with Loop Q, see the dramatic improvement that a tireless digital workforce can make with an unsupervised approach.',
+      features: [
+        {
+          title: 'UNSUPERVISED LEARNING',
+          description: 'Loop Q learns in any language from unlabeled data without human guidance. Our proprietary algorithm uses deep learning and classical symbolic reasoning to allow Loop Q to learn in any human or machine language without requiring expensive and time-intensive, human-generated labels, dictionaries or grammar.',
+          icon: 'Brain',
+        },
+        {
+          title: 'HIGH ACCURACY',
+          description: 'High accuracy: Loop Cortex is automatically built from scratch using client data in any language, independent of human involvement. Loop Q arrives on the job as a blank slate, with no prior knowledge of word meanings, grammar, or specific industrial processes.',
+          icon: 'Target',
+        },
+        {
+          title: 'NATURAL LANGUAGE PROCESSING',
+          description: 'Loop Q learns any language in a matter of minutes. Already fluent in 15+ languages, Loop Q learns human language directly from data, just like native human speakers.',
+          icon: 'Languages',
+        },
+        {
+          title: 'CONTINUOUS + AUTOMATIC LEARNING',
+          description: 'Loop Q achieves deep understanding of data across any specific data domain. As new data becomes available, the model is automatically updated without human supervision to provide the highest level of accuracy.',
+          icon: 'RefreshCw',
+        },
+      ],
+      ...(stackImage && { stackImage }),
+    },
+    howItWorksSection: {
+      title: 'How It Works',
+      description: 'Our proprietary, unsupervised algorithms allow our robots to learn language, workflows and concepts directly from your source data—without being explicitly told what to look for, or where.',
+      subDescription: 'Your enterprise has produced data for years, but only a small percent of it (the "structured" part) could be understood by computers without human guidance. Now, Loop Q can take you beyond that tip of the iceberg and understand 100% of your data.',
+      ...(processImage && { processImage }),
+      howItWorksTitle: 'How the Loop Q Cognitive Computing Platform Works',
+    },
+    ctaSection: {
+      title: 'Let Q Work For You',
+      description: 'Smart. Fast. Tireless. Build your competitive digital workforce today.',
+      primaryButton: {
+        text: 'Book a Demo',
+        link: '/cognitive-platforms/book-demo',
+      },
+    },
+  };
+}
+
+// Platform Facts data
+async function createPlatformFactsData() {
+  const worldImage = await uploadImage('facts/world.avif', 'World map showing global validation');
+  const humansImage = await uploadImage('facts/humans.avif', 'Traditional workforce');
+  const robotsImage = await uploadImage('facts/robots.avif', 'Loop AI platform');
+  const workforce1Image = await uploadImage('facts/workforce_1.avif', 'Traditional Workforce');
+  const workforce2Image = await uploadImage('facts/workforce_2.avif', 'Training Required');
+  const workforce3Image = await uploadImage('facts/workforce_3.avif', 'Paid Time Off');
+  const workforce4Image = await uploadImage('facts/workforce_4.avif', 'Human Error');
+  const loop1Image = await uploadImage('facts/loop_1.avif', 'Loop AI Agent');
+  const loop2Image = await uploadImage('facts/loop_2.avif', 'Unsupervised Learning');
+  const loop3Image = await uploadImage('facts/loop_3.avif', '24/7 Work');
+  const loop4Image = await uploadImage('facts/loop_4.avif', 'Accuracy');
+
+  return {
+    _type: 'platformFacts',
+    title: 'Platform Facts',
+    seo: {
+      metaTitle: 'Platform Facts - Loop AI Agents Orchestra and Loop Q Capabilities',
+      metaDescription: 'See how can you transform your business and workforce with Loop AI Agents Orchestra and Loop Q Cognitive Platform.',
+    },
+    heroSection: {
+      title: 'What Can Loop AI Agents Orchestra and Loop Q Do For Your Organization?',
+      subtitle: 'See how can you transform your business and workforce',
+    },
+    learningSpeedSection: {
+      title: 'Loop AI Agent Learning Speed',
+      description: 'An AI Agent typically learns two years of knowledge work from the best human employees in less than 15 minutes',
+      humanYears: '2',
+      loopMinutes: '15',
+      badgeText: 'Unsupervised learning',
+    },
+    industryValidationSection: {
+      title: 'Loop AI Agents: Industry Validation',
+      description: 'AI agents built with Loop Q and Loop AI Agents Orchestra have been successfully validated by large enterprises across multiple industries.',
+      industries: [
+        { name: 'Insurance', color: 'blue-500' },
+        { name: 'Banking & Financial Services', color: 'green-500' },
+        { name: 'Government & Defense', color: 'purple-500' },
+        { name: 'Telecommunications & Media', color: 'orange-500' },
+        { name: 'Manufacturing & Logistics', color: 'red-500' },
+        { name: 'Automotive & Transportation', color: 'indigo-500' },
+        { name: 'Healthcare', color: 'pink-500' },
+      ],
+      badgeText: 'Validated with Large Enterprise in the Following Industries',
+    },
+    marketValidationSection: {
+      title: 'Loop AI Agent Market Validation',
+      description: 'AI agents built with Loop Q and Loop AI Agents Orchestra have been deployed across continents and languages since 2015, starting in Asia and expanding to Europe and the USA—years ahead of mainstream AI adoption.',
+      markets: [
+        { name: 'Asia', year: 'Since 2015', status: 'Pioneer', color: 'primary' },
+        { name: 'Europe', year: 'Since 2018', status: 'Expansion', color: 'accent' },
+        { name: 'USA', year: 'Since 2020', status: 'Growth', color: 'primary' },
+      ],
+      badgeText: 'Validated in the Following Markets',
+      ...(worldImage && { worldImage }),
+    },
+    costSavingsSection: {
+      title: 'Cost Savings with Loop AI Agents Orchestra',
+      traditionalWorkforceLabel: 'TRADITIONAL WORKFORCE',
+      traditionalWorkforceDescription: 'Traditional human knowledge workforce',
+      loopPlatformLabel: 'LOOP Q PLATFORM',
+      loopPlatformDescription: 'Intelligent augmented digital workforce',
+      comparisons: [
+        {
+          title: 'COST PER HOUR',
+          traditionalValue: '$17',
+          traditionalLabel: 'Traditional Workforce',
+          traditionalDescription: 'Avg Hourly Cost of Human Knowledge Workers',
+          loopValue: '$0.6',
+          loopLabel: 'Loop AI Agent',
+          loopDescription: 'Loop AI Agent Hourly Cost',
+          improvement: '28x Cost Reduction',
+          ...(workforce1Image && { traditionalIconImage: workforce1Image }),
+          ...(loop1Image && { loopIconImage: loop1Image }),
+        },
+        {
+          title: 'COST OF SUPERVISION',
+          traditionalValue: 'Training',
+          traditionalLabel: 'Training Required',
+          traditionalDescription: 'Requires education + management',
+          loopValue: 'Unsupervised',
+          loopLabel: 'Unsupervised Learning',
+          loopDescription: 'Continuous and autonomous self-learning',
+          improvement: 'Zero Supervision Cost',
+          ...(workforce2Image && { traditionalIconImage: workforce2Image }),
+          ...(loop2Image && { loopIconImage: loop2Image }),
+        },
+        {
+          title: 'COST OF TIME OFF',
+          traditionalValue: 'Paid time off',
+          traditionalLabel: 'Paid Time Off',
+          traditionalDescription: 'Paid vacation, sick days, holidays, events',
+          loopValue: '24/7 Work',
+          loopLabel: '24/7 Work',
+          loopDescription: 'Tireless workforce always productive',
+          improvement: '100% Uptime',
+          ...(workforce3Image && { traditionalIconImage: workforce3Image }),
+          ...(loop3Image && { loopIconImage: loop3Image }),
+        },
+        {
+          title: 'HUMAN ERROR RATE',
+          traditionalValue: '20%',
+          traditionalLabel: 'Human Error',
+          traditionalDescription: '20% human error rate',
+          loopValue: '80%',
+          loopLabel: 'Accuracy',
+          loopDescription: 'Increased accuracy by 80%',
+          improvement: '4x More Accurate',
+          ...(workforce4Image && { traditionalIconImage: workforce4Image }),
+          ...(loop4Image && { loopIconImage: loop4Image }),
+        },
+      ],
+    },
+    ctaSection: {
+      title: 'Learn The Possibilities',
+      description: 'Discover How Loop AI Agents Orchestra and Loop Q Cognitive Platform Solve Your Business Challenges',
+      primaryButton: {
+        text: 'Implemented Solutions',
+        link: '/',
+      },
+    },
+  };
+}
+
+// Book Demo data
+function createBookDemoData() {
+  return {
+    _type: 'bookDemo',
+    title: 'Book a Demo',
+    seo: {
+      metaTitle: 'Book a Demo - Loop AI Group',
+      metaDescription: 'Please fill out this form and a Loop AI Group representative will be in touch.',
+    },
+    heroSection: {
+      title: 'Book a Demo',
+      description: 'Please fill out this form and a Loop AI Group representative will be in touch.',
+    },
+    formSection: {
+      title: 'Request a Demo',
+      description: 'Fill out the form below to schedule your personalized demo of Loop AI Agents Orchestra.',
+      fields: [
+        {
+          name: 'firstName',
+          label: 'First name',
+          type: 'text',
+          placeholder: 'Enter your first name',
+          required: true,
+        },
+        {
+          name: 'lastName',
+          label: 'Last name',
+          type: 'text',
+          placeholder: 'Enter your last name',
+          required: true,
+        },
+        {
+          name: 'email',
+          label: 'Email',
+          type: 'email',
+          placeholder: 'Enter your email address',
+          required: true,
+        },
+        {
+          name: 'role',
+          label: 'Role',
+          type: 'text',
+          placeholder: 'e.g., CTO, AI Director, VP of Technology',
+          required: true,
+        },
+        {
+          name: 'organization',
+          label: 'Organization',
+          type: 'text',
+          placeholder: 'Enter your organization name',
+          required: true,
+        },
+        {
+          name: 'country',
+          label: 'Country',
+          type: 'text',
+          placeholder: 'Enter your country',
+          required: true,
+        },
+        {
+          name: 'organizationSize',
+          label: 'Organization Size',
+          type: 'select',
+          placeholder: 'Select Size',
+          required: true,
+          options: [
+            { value: '1-10', label: '1-10 employees' },
+            { value: '11-50', label: '11-50 employees' },
+            { value: '51-200', label: '51-200 employees' },
+            { value: '201-500', label: '201-500 employees' },
+            { value: '501-1000', label: '501-1000 employees' },
+            { value: '1000+', label: '1000+ employees' },
+          ],
+        },
+        {
+          name: 'challenges',
+          label: 'What challenges or goals are you hoping to address with our Enterprise AI platform? We\'d love to tailor your demo to showcase how we can best support your needs!',
+          type: 'textarea',
+          placeholder: 'Describe your AI initiatives, current challenges, and what you\'d like to see in the demo...',
+          required: true,
+        },
+      ],
+      submitButtonText: 'Request a Demo',
+    },
+  };
+}
+
 // Main seeding function
 async function seedAllContent() {
   try {
     console.log('🚀 Starting comprehensive Sanity seeding...');
     
-    // Create individual team members and success cases first
-    const teamMembers = await createTeamMembers();
-    const successCases = await createIndividualSuccessCases();
-    
-    // Check for existing documents
-    const existingDocs = await client.fetch('*[_type in ["homepage", "aboutUs", "team", "teamMember", "successCases", "successCase", "contact", "careers", "videos", "mediaAnalystRelations", "loopAiResearch"]]');
+    // Check for existing documents first
+    const existingDocs = await client.fetch('*[_type in ["homepage", "aboutUs", "team", "teamMember", "successCases", "successCase", "loopAiAgentsOrchestra", "loopQ", "platformFacts", "bookDemo", "contact", "careers", "videos", "mediaAnalystRelations", "loopAiResearch"]]');
     
     if (existingDocs.length > 0) {
       console.log('⚠️  Found existing documents in Sanity. Deleting them first...');
@@ -1246,12 +1788,22 @@ async function seedAllContent() {
       }
     }
 
+    // Create individual team members and success cases after cleanup
+    console.log('👥 Creating individual team members...');
+    const teamMembers = await createTeamMembers();
+    console.log('🎯 Creating individual success cases...');
+    const successCases = await createIndividualSuccessCases();
+
     // Create all documents
     const documents = [
       { name: 'Homepage', data: await createHomepageData() },
       { name: 'About Us', data: await createAboutUsData() },
       { name: 'Team', data: await createTeamData() },
       { name: 'Success Cases', data: await createSuccessCasesData() },
+      { name: 'Loop AI Agents Orchestra', data: await createLoopAiAgentsOrchestraData() },
+      { name: 'Loop Q', data: await createLoopQData() },
+      { name: 'Platform Facts', data: await createPlatformFactsData() },
+      { name: 'Book Demo', data: createBookDemoData() },
       { name: 'Contact', data: createContactData() },
       { name: 'Careers', data: createCareersData() },
       { name: 'Videos', data: createVideosData() },

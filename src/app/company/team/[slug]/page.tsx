@@ -1,5 +1,6 @@
 "use client";
 
+import { use } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { ArrowLeft, Linkedin, Users } from "lucide-react";
@@ -8,13 +9,14 @@ import { Button } from "@/components/ui/button";
 import { useTeamMember } from "@/hooks/use-team-member";
 
 interface TeamMemberPageProps {
-  params: {
+  params: Promise<{
     slug: string;
-  };
+  }>;
 }
 
 export default function TeamMemberPage({ params }: TeamMemberPageProps) {
-  const { data: member, isLoading, error } = useTeamMember(params.slug);
+  const resolvedParams = use(params);
+  const { data: member, isLoading, error } = useTeamMember(resolvedParams.slug);
 
   if (isLoading) {
     return (

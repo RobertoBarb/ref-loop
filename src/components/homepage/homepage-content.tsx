@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import Image from "next/image";
-import { ArrowRight, Bot, Brain, Cloud, Database, Globe, Play, Sparkles, Zap } from "lucide-react";
+import { Bot, Brain, Cloud, Database, Globe, Sparkles, Zap } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
@@ -16,8 +16,6 @@ const iconMap = {
   Sparkles,
   Bot,
   Globe,
-  Play,
-  ArrowRight,
   Zap,
 } as const;
 
@@ -70,30 +68,6 @@ export function HomepageContent({ data }: HomepageContentProps) {
                 </p>
               </div>
               
-              <div className="flex flex-col sm:flex-row gap-4">
-                {(heroSection.primaryButton ?? {
-                  text: 'Book a Demo',
-                  link: '/cognitive-platforms/book-demo',
-                }) && (
-                  <Button size="lg" className="pulse-glow" asChild>
-                    <Link href={heroSection.primaryButton?.link ?? '/cognitive-platforms/book-demo'}>
-                      <Play className="mr-2 h-5 w-5" />
-                      {heroSection.primaryButton?.text ?? 'Book a Demo'}
-                    </Link>
-                  </Button>
-                )}
-                {(heroSection.secondaryButton ?? {
-                  text: 'Learn More',
-                  link: '/cognitive-platforms/loop-ai-agents-orchestra',
-                }) && (
-                  <Button variant="outline" size="lg" asChild>
-                    <Link href={heroSection.secondaryButton?.link ?? '/cognitive-platforms/loop-ai-agents-orchestra'}>
-                      {heroSection.secondaryButton?.text ?? 'Learn More'}
-                      <ArrowRight className="ml-2 h-4 w-4" />
-                    </Link>
-                  </Button>
-                )}
-              </div>
             </div>
             
             <div className="relative">

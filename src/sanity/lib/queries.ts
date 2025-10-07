@@ -10,14 +10,6 @@ export const homepageQuery = groq`
     heroSection {
       title,
       subtitle,
-      primaryButton {
-        text,
-        link
-      },
-      secondaryButton {
-        text,
-        link
-      },
       heroImage {
         asset->{
           _id,
@@ -394,6 +386,332 @@ export const loopAiResearchQuery = groq`
         text,
         link
       }
+    }
+  }
+`
+
+// Loop AI Agents Orchestra Query
+export const loopAiAgentsOrchestraQuery = groq`
+  *[_type == "loopAiAgentsOrchestra"][0] {
+    title,
+    seo {
+      metaTitle,
+      metaDescription
+    },
+    heroSection {
+      title,
+      subtitle,
+      heroImage {
+        asset->{
+          _id,
+          url
+        },
+        alt
+      }
+    },
+    architecturalPillars {
+      title,
+      subtitle,
+      pillars[] {
+        title,
+        icon,
+        features[] {
+          title,
+          description
+        }
+      }
+    },
+    vendorAgnosticSection {
+      title,
+      description,
+      futureProofTitle,
+      futureProofDescription,
+      technicalDefinitionTitle,
+      technicalDefinitionDescription
+    },
+    algorithmSelectionSection {
+      title,
+      description,
+      features[] {
+        title,
+        description
+      },
+      trainingImages[] {
+        image {
+          asset->{
+            _id,
+            url
+          },
+          alt
+        }
+      }
+    },
+    technicalHeritageSection {
+      title,
+      description,
+      features[] {
+        title,
+        description,
+        icon
+      },
+      llmMlImages[] {
+        image {
+          asset->{
+            _id,
+            url
+          },
+          alt
+        }
+      }
+    },
+    responsibleAiSection {
+      title,
+      features[] {
+        title,
+        description
+      },
+      responsibleAiImage {
+        asset->{
+          _id,
+          url
+        },
+        alt
+      }
+    },
+    technicalSpecificationsSection {
+      title,
+      specifications[] {
+        title,
+        description
+      }
+    },
+    ctaSection {
+      title,
+      description,
+      primaryButton {
+        text,
+        link
+      },
+      secondaryButton {
+        text,
+        link
+      }
+    },
+    videoSection {
+      title,
+      youtubeVideoId,
+      videoTitle
+    },
+    finalCtaSection {
+      title,
+      description,
+      primaryButton {
+        text,
+        link
+      }
+    }
+  }
+`
+
+// Loop Q Query
+export const loopQQuery = groq`
+  *[_type == "loopQ"][0] {
+    title,
+    seo {
+      metaTitle,
+      metaDescription
+    },
+    heroSection {
+      logo {
+        asset->{
+          _id,
+          url
+        },
+        alt
+      },
+      title,
+      description,
+      subDescription,
+      images[] {
+        image {
+          asset->{
+            _id,
+            url
+          },
+          alt
+        }
+      }
+    },
+    keyDifferentiatorsSection {
+      title,
+      subtitle,
+      description,
+      features[] {
+        title,
+        description,
+        icon
+      },
+      stackImage {
+        asset->{
+          _id,
+          url
+        },
+        alt
+      }
+    },
+    howItWorksSection {
+      title,
+      description,
+      subDescription,
+      processImage {
+        asset->{
+          _id,
+          url
+        },
+        alt
+      },
+      howItWorksTitle
+    },
+    ctaSection {
+      title,
+      description,
+      primaryButton {
+        text,
+        link
+      }
+    }
+  }
+`
+
+// Platform Facts Query
+export const platformFactsQuery = groq`
+  *[_type == "platformFacts"][0] {
+    title,
+    seo {
+      metaTitle,
+      metaDescription
+    },
+    heroSection {
+      title,
+      subtitle
+    },
+    learningSpeedSection {
+      title,
+      description,
+      humanYears,
+      loopMinutes,
+      badgeText
+    },
+    industryValidationSection {
+      title,
+      description,
+      industries[] {
+        name,
+        color
+      },
+      badgeText
+    },
+    marketValidationSection {
+      title,
+      description,
+      markets[] {
+        name,
+        year,
+        status,
+        color
+      },
+      badgeText,
+      worldImage {
+        asset->{
+          _id,
+          url
+        },
+        alt
+      }
+    },
+    costSavingsSection {
+      title,
+      traditionalWorkforceLabel,
+      traditionalWorkforceDescription,
+      loopPlatformLabel,
+      loopPlatformDescription,
+      comparisons[] {
+        title,
+        traditionalValue,
+        traditionalLabel,
+        traditionalDescription,
+        loopValue,
+        loopLabel,
+        loopDescription,
+        improvement,
+        traditionalImage {
+          asset->{
+            _id,
+            url
+          },
+          alt
+        },
+        loopImage {
+          asset->{
+            _id,
+            url
+          },
+          alt
+        },
+        traditionalIconImage {
+          asset->{
+            _id,
+            url
+          },
+          alt
+        },
+        loopIconImage {
+          asset->{
+            _id,
+            url
+          },
+          alt
+        }
+      }
+    },
+    ctaSection {
+      title,
+      description,
+      primaryButton {
+        text,
+        link
+      }
+    }
+  }
+`
+
+// Book Demo Query
+export const bookDemoQuery = groq`
+  *[_type == "bookDemo"][0] {
+    title,
+    seo {
+      metaTitle,
+      metaDescription
+    },
+    heroSection {
+      title,
+      description
+    },
+    formSection {
+      title,
+      description,
+      fields[] {
+        name,
+        label,
+        type,
+        placeholder,
+        required,
+        options[] {
+          value,
+          label
+        }
+      },
+      submitButtonText
     }
   }
 `

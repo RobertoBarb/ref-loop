@@ -77,7 +77,7 @@ export default function RootLayout({
           }}
         />
       </head>
-      <body className={`font-sans ${inter.variable}`}>
+      <body className={`font-sans ${inter.variable}`} suppressHydrationWarning={true}>
         <TRPCReactProvider>
           <NuqsAdapter>
             <ThemeProvider

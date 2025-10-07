@@ -113,66 +113,39 @@ export default function Team() {
         <div className="container mx-auto px-4">
           <div className="text-center space-y-4 mb-16">
             <h2 className="text-4xl lg:text-5xl font-bold">
-              Board of Advisors
+              {data.boardOfAdvisors.title}
             </h2>
           </div>
 
           <div className="max-w-6xl mx-auto">
             <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-              {[
-                {
-                  name: "Tom Davenport",
-                  image: "/images/Team/tom_davenport.avif"
-                },
-                {
-                  name: "Vinay Chaudhri",
-                  image: "/images/Team/vinay.avif"
-                },
-                {
-                  name: "Raul Véjar",
-                  image: "/images/Team/raul.avif"
-                },
-                {
-                  name: "Massimo Marchiori",
-                  image: "/images/Team/massimo.avif"
-                },
-                {
-                  name: "Tony Trousset",
-                  image: "/images/Team/tony.avif"
-                },
-                {
-                  name: "Doug Bewsher",
-                  image: "/images/Team/doug.avif"
-                },
-                {
-                  name: "Claus Karthe",
-                  image: "/images/Team/claus.avif"
-                }
-              ].map((advisor, index) => (
+              {data.boardOfAdvisors.members.map((advisor, index) => (
                 <Card key={index} className="glass-effect hover:scale-105 transition-transform duration-300">
                   <CardContent className="p-6 space-y-4">
                     <div className="text-center">
-                      <div className="w-40 h-40 mx-auto mb-4 relative overflow-hidden rounded-full">
-                        <Image
-                          src={advisor.image}
-                          alt={advisor.name}
-                          fill
-                          className="object-cover"
-                        />
-                      </div>
+                      {advisor.image && (
+                        <div className="w-40 h-40 mx-auto mb-4 relative overflow-hidden rounded-full">
+                          <Image
+                            src={advisor.image.asset.url}
+                            alt={advisor.image.alt}
+                            fill
+                            className="object-cover"
+                          />
+                        </div>
+                      )}
                       <h3 className="text-xl font-semibold">{advisor.name}</h3>
                     </div>
                     
                     <div className="flex space-x-2 pt-2">
                       <Button size="sm" variant="outline" className="flex-1 group/btn btn-gradient-outline" asChild>
-                        <Link href={`/company/team/${advisor.name.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/\s+/g, '-').replace(/[^a-z0-9-]/g, '').replace('--', '-').replace(/-$/, '')}`}>
+                        <Link href={`/company/team/${advisor.slug.current}`}>
                           <Mail className="h-4 w-4 mr-1 group-hover/btn:scale-110 transition-transform duration-300" />
                           View Info
                         </Link>
                       </Button>
-                      {linkedinLinks[advisor.name.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/\s+/g, '-').replace(/[^a-z0-9-]/g, '').replace('--', '-').replace(/-$/, '')] ? (
+                      {advisor.linkedinUrl ? (
                         <Button size="sm" variant="outline" className="flex-1 group/btn btn-gradient-outline" asChild>
-                          <a href={linkedinLinks[advisor.name.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/\s+/g, '-').replace(/[^a-z0-9-]/g, '').replace('--', '-').replace(/-$/, '')]} target="_blank" rel="noopener noreferrer">
+                          <a href={advisor.linkedinUrl} target="_blank" rel="noopener noreferrer">
                             <Linkedin className="h-4 w-4 mr-1 group-hover/btn:scale-110 transition-transform duration-300" />
                             LinkedIn
                           </a>
