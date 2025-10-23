@@ -16,6 +16,7 @@ import { videos } from './videos'
 import { mediaAnalystRelations } from './media-analyst-relations'
 import { loopAiResearch } from './loop-ai-research'
 import { emailjsConfig } from './emailjs-config'
+import { footer } from './footer'
 
 export const schema: { types: SchemaTypeDefinition[] } = {
   types: [
@@ -36,5 +37,6 @@ export const schema: { types: SchemaTypeDefinition[] } = {
     mediaAnalystRelations,
     loopAiResearch,
     emailjsConfig,
+    footer,
   ],
 }

@@ -12,9 +12,15 @@ const client = createClient({
   apiVersion: '2024-01-01',
   useCdn: false,
   token: process.env.SANITY_API_TOKEN,
+  // Add performance optimizations
+  perspective: 'published', // Only fetch published content
+  stega: {
+    enabled: process.env.NODE_ENV === 'development', // Enable visual editing in dev
+    studioUrl: process.env.NODE_ENV === 'development' ? '/studio' : undefined,
+  },
 });
 
-// Funzione per caricare immagini su Sanity
+// Funzione per caricare immagini su Sanity con ottimizzazioni
 async function uploadImage(fileName: string, alt: string) {
   try {
     const filePath = join(process.cwd(), 'public', 'images', fileName);
@@ -22,6 +28,9 @@ async function uploadImage(fileName: string, alt: string) {
     
     const asset = await client.assets.upload('image', createReadStream(filePath), {
       filename: fileName,
+      // Add performance optimizations
+      extract: ['blurhash', 'palette', 'exif', 'location'],
+      preserveFilename: false,
     });
 
     console.log(`✅ Image uploaded successfully: ${asset._id}`);
@@ -37,7 +46,7 @@ async function uploadImage(fileName: string, alt: string) {
   }
 }
 
-// Funzione per caricare PDF su Sanity
+// Funzione per caricare PDF su Sanity con ottimizzazioni
 async function uploadPDF(fileName: string) {
   try {
     const filePath = join(process.cwd(), 'public', 'docs', fileName);
@@ -45,6 +54,8 @@ async function uploadPDF(fileName: string) {
     
     const asset = await client.assets.upload('file', createReadStream(filePath), {
       filename: fileName,
+      // Add performance optimizations
+      preserveFilename: false,
     });
 
     console.log(`✅ PDF uploaded successfully: ${asset._id}`);
@@ -272,10 +283,10 @@ async function createTeamData() {
     },
     executiveTeam: {
       title: 'Executive Team',
-      members: executiveTeam.map((member, index) => ({
+      members: executiveTeam.map((member, _index) => ({
         name: member.name,
         role: member.role,
-        image: uploadedTeamImages[index]?.uploadedImage,
+        image: uploadedTeamImages[_index]?.uploadedImage,
         linkedinUrl: member.name === 'Andrea Pitrone' ? 'https://www.linkedin.com/in/andrea-pitrone-a012712/' : undefined,
         slug: {
           current: member.name.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/\s+/g, '-').replace(/[^a-z0-9-]/g, '').replace('phd', '').replace('--', '-').replace(/-$/, ''),
@@ -284,7 +295,7 @@ async function createTeamData() {
     },
     boardOfAdvisors: {
       title: 'Board of Advisors',
-      members: uploadedAdvisorImages.map((advisor, index) => ({
+      members: uploadedAdvisorImages.map((advisor, _index) => ({
         name: advisor.name,
         image: advisor.uploadedImage,
         linkedinUrl: advisor.name === 'Vinay Chaudhri' ? 'https://www.linkedin.com/in/vinay-k-chaudhri-849556/' : undefined,
@@ -1554,8 +1565,6 @@ async function createLoopQData() {
 // Platform Facts data
 async function createPlatformFactsData() {
   const worldImage = await uploadImage('facts/world.avif', 'World map showing global validation');
-  const humansImage = await uploadImage('facts/humans.avif', 'Traditional workforce');
-  const robotsImage = await uploadImage('facts/robots.avif', 'Loop AI platform');
   const workforce1Image = await uploadImage('facts/workforce_1.avif', 'Traditional Workforce');
   const workforce2Image = await uploadImage('facts/workforce_2.avif', 'Training Required');
   const workforce3Image = await uploadImage('facts/workforce_3.avif', 'Paid Time Off');
@@ -1769,10 +1778,96 @@ function createEmailJSConfigData() {
   return {
     _type: 'emailjsConfig',
     title: 'EmailJS Configuration',
-    serviceId: 'your_service_id',
-    templateId: 'template_unified_conditional',
-    publicKey: 'your_public_key',
+    serviceId: 'service_halss8z',
+    templateId: 'template_gzgxcwp',
+    publicKey: '_IsGcqR5qSufMNDdM',
   };
+}
+
+// Footer data
+async function createFooterData() {
+  console.log('🖼️ Uploading footer logo...');
+  
+  const footerLogo = await uploadImage('loopai_Group_Logo_2022.avif', 'Loop AI Group Logo');
+  
+  return {
+    _type: 'footer',
+    title: 'Footer',
+    companyName: 'Loop AI Group',
+    copyrightText: '© 2024 Loop AI Group and its affiliates. All Rights Reserved.',
+    ...(footerLogo && { logo: footerLogo }),
+    legalInfo: {
+      legalAddress: 'Legal Address: xxxxx, xxxxx - xxxxx (xxxxx)',
+      vatNumber: 'VAT: xxxxx',
+      registrationNumber: 'Registration Number: xxxxx'
+    },
+    socialLinks: [
+      {
+        platform: 'linkedin',
+        url: 'https://www.linkedin.com/company/loop-ai-group',
+        icon: 'Linkedin'
+      },
+      {
+        platform: 'youtube',
+        url: 'https://www.youtube.com/@LoopAiLabs',
+        icon: 'Youtube'
+      }
+    ],
+    quickLinks: [
+      {
+        label: 'About Us',
+        url: '/company/about'
+      },
+      {
+        label: 'Team',
+        url: '/company/team'
+      },
+      {
+        label: 'Success Cases',
+        url: '/success-cases'
+      },
+      {
+        label: 'Contact',
+        url: '/company/contact'
+      },
+      {
+        label: 'Careers',
+        url: '/company/careers'
+      },
+      {
+        label: 'Loop AI Agents Orchestra',
+        url: '/cognitive-platforms/loop-ai-agents-orchestra'
+      },
+      {
+        label: 'Loop Q',
+        url: '/cognitive-platforms/loop-q'
+      },
+      {
+        label: 'Book a Demo',
+        url: '/cognitive-platforms/book-demo'
+      }
+    ]
+  };
+}
+
+// Funzione per ottimizzare le performance durante il seeding
+async function optimizeSeedingPerformance() {
+  console.log('⚡ Optimizing seeding performance...');
+  
+  // Configure client for optimal performance during seeding
+  const optimizedClient = createClient({
+    projectId: process.env.NEXT_PUBLIC_SANITY_PROJECT_ID!,
+    dataset: process.env.NEXT_PUBLIC_SANITY_DATASET!,
+    apiVersion: '2024-01-01',
+    useCdn: false,
+    token: process.env.SANITY_API_TOKEN,
+    perspective: 'published',
+    stega: {
+      enabled: false, // Disable stega during seeding for better performance
+    },
+  });
+  
+  return optimizedClient;
 }
 
 // Main seeding function
@@ -1780,38 +1875,41 @@ async function seedAllContent() {
   try {
     console.log('🚀 Starting comprehensive Sanity seeding...');
     
+    // Use optimized client for seeding
+    const optimizedClient = await optimizeSeedingPerformance();
+    
     // Check for existing documents first
-    const existingDocs = await client.fetch('*[_type in ["homepage", "aboutUs", "team", "teamMember", "successCases", "successCase", "loopAiAgentsOrchestra", "loopQ", "platformFacts", "bookDemo", "contact", "careers", "videos", "mediaAnalystRelations", "loopAiResearch", "emailjsConfig"]]');
+    const existingDocs = await optimizedClient.fetch('*[_type in ["homepage", "aboutUs", "team", "teamMember", "successCases", "successCase", "loopAiAgentsOrchestra", "loopQ", "platformFacts", "bookDemo", "contact", "careers", "videos", "mediaAnalystRelations", "loopAiResearch", "emailjsConfig", "footer"]]');
     
     if (existingDocs.length > 0) {
       console.log('⚠️  Found existing documents in Sanity. Deleting them first...');
       
-      // Delete existing documents
+      // Delete existing documents using optimized client
       for (const doc of existingDocs) {
-        await client.delete(doc._id);
+        await optimizedClient.delete(doc._id);
         console.log(`🗑️  Deleted: ${doc._type} - ${doc.title || doc._id}`);
       }
       
       // Also delete individual team members and success cases
-      const teamMembersToDelete = await client.fetch('*[_type == "teamMember"]');
-      const successCasesToDelete = await client.fetch('*[_type == "successCase"]');
+      const teamMembersToDelete = await optimizedClient.fetch('*[_type == "teamMember"]');
+      const successCasesToDelete = await optimizedClient.fetch('*[_type == "successCase"]');
       
       for (const doc of teamMembersToDelete) {
-        await client.delete(doc._id);
+        await optimizedClient.delete(doc._id);
         console.log(`🗑️  Deleted team member: ${doc.name}`);
       }
       
       for (const doc of successCasesToDelete) {
-        await client.delete(doc._id);
+        await optimizedClient.delete(doc._id);
         console.log(`🗑️  Deleted success case: ${doc.title}`);
       }
     }
 
     // Create individual team members and success cases after cleanup
     console.log('👥 Creating individual team members...');
-    const teamMembers = await createTeamMembers();
+    await createTeamMembers();
     console.log('🎯 Creating individual success cases...');
-    const successCases = await createIndividualSuccessCases();
+    await createIndividualSuccessCases();
 
     // Create all documents
     const documents = [
@@ -1829,12 +1927,31 @@ async function seedAllContent() {
       { name: 'Media & Analyst Relations', data: createMediaAnalystRelationsData() },
       { name: 'Loop AI Research', data: await createLoopAIResearchData() },
       { name: 'EmailJS Configuration', data: createEmailJSConfigData() },
+      { name: 'Footer', data: await createFooterData() },
     ];
 
-    for (const doc of documents) {
-      console.log(`📝 Creating ${doc.name} document...`);
-      const created = await client.create(doc.data);
-      console.log(`✅ ${doc.name} created successfully! ID: ${created._id}`);
+    // Create documents with batch processing for better performance
+    console.log('📝 Creating documents with batch processing...');
+    
+    // Process documents in batches to avoid overwhelming the API
+    const batchSize = 3;
+    for (let i = 0; i < documents.length; i += batchSize) {
+      const batch = documents.slice(i, i + batchSize);
+      console.log(`📦 Processing batch ${Math.floor(i / batchSize) + 1}/${Math.ceil(documents.length / batchSize)}`);
+      
+      const batchPromises = batch.map(async (doc) => {
+        console.log(`📝 Creating ${doc.name} document...`);
+        const created = await optimizedClient.create(doc.data as any);
+        console.log(`✅ ${doc.name} created successfully! ID: ${created._id}`);
+        return created;
+      });
+      
+      await Promise.all(batchPromises);
+      
+      // Small delay between batches to avoid rate limiting
+      if (i + batchSize < documents.length) {
+        await new Promise(resolve => setTimeout(resolve, 100));
+      }
     }
     
     console.log('🎉 Comprehensive Sanity seeding completed successfully!');

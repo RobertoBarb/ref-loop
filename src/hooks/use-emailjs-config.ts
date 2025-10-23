@@ -15,9 +15,9 @@ export function useEmailJSConfig() {
     queryFn: async () => {
       const data = await client.fetch(emailjsConfigQuery);
       return {
-        serviceId: data?.serviceId || process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID || 'your_service_id',
-        templateId: data?.templateId || process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID || 'your_template_id',
-        publicKey: data?.publicKey || process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY || 'your_public_key',
+        serviceId: data?.serviceId || 'service_halss8z',
+        templateId: data?.templateId || 'template_gzgxcwp',
+        publicKey: data?.publicKey || '_IsGcqR5qSufMNDdM',
       };
     },
     staleTime: 5 * 60 * 1000, // 5 minutes

@@ -70,6 +70,86 @@ export const homepageQuery = groq`
   }
 `
 
+// Optimized homepage query with image optimization
+export const homepageOptimizedQuery = groq`
+  *[_type == "homepage"][0] {
+    title,
+    seo {
+      metaTitle,
+      metaDescription
+    },
+    heroSection {
+      title,
+      subtitle,
+      heroImage {
+        asset->{
+          _id,
+          url,
+          metadata {
+            dimensions
+          }
+        },
+        alt
+      }
+    },
+    aiChaosSection {
+      title,
+      subtitle,
+      chaosImage {
+        asset->{
+          _id,
+          url,
+          metadata {
+            dimensions
+          }
+        },
+        alt
+      }
+    },
+    enterpriseControlCenter {
+      title,
+      subtitle,
+      features[] {
+        title,
+        description,
+        icon
+      }
+    },
+    videoSection {
+      title,
+      subtitle,
+      youtubeVideoId,
+      videoTitle
+    },
+    ctaSection {
+      title,
+      subtitle,
+      primaryButton {
+        text,
+        link
+      },
+      secondaryButton {
+        text,
+        link
+      }
+    },
+    footer {
+      logo {
+        asset->{
+          _id,
+          url,
+          metadata {
+            dimensions
+          }
+        },
+        alt
+      },
+      companyName,
+      copyrightText
+    }
+  }
+`
+
 // About Us Query
 export const aboutUsQuery = groq`
   *[_type == "aboutUs"][0] {

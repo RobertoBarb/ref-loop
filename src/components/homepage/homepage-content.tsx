@@ -7,6 +7,7 @@ import { Bot, Brain, Cloud, Database, Globe, Sparkles, Zap } from "lucide-react"
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { type HomepageData } from "@/hooks/use-homepage";
+import { getOptimizedImageUrl } from "@/lib/sanity-performance";
 
 // Icon mapping per le icone Lucide
 const iconMap = {
@@ -24,7 +25,7 @@ interface HomepageContentProps {
 }
 
 export function HomepageContent({ data }: HomepageContentProps) {
-  const { heroSection, aiChaosSection, enterpriseControlCenter, videoSection, ctaSection, footer } = data;
+  const { heroSection, aiChaosSection, enterpriseControlCenter, videoSection, ctaSection } = data;
 
   // Funzione per applicare il gradiente a "AI Agents" e "AI Chaos" nei titoli
   const formatTitleWithGradient = (title: string) => {
@@ -76,10 +77,12 @@ export function HomepageContent({ data }: HomepageContentProps) {
                   <div className="aspect-square bg-gradient-to-br from-primary/20 to-accent/20 rounded-xl flex items-center justify-center overflow-hidden">
                     {heroSection.heroImage ? (
                       <Image 
-                        src={heroSection.heroImage.asset.url} 
+                        src={getOptimizedImageUrl(heroSection.heroImage.asset.url, 400, 400)} 
                         alt={heroSection.heroImage.alt} 
                         fill
                         className="object-cover rounded-xl"
+                        priority
+                        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                       />
                     ) : (
                       <Image 
@@ -117,11 +120,12 @@ export function HomepageContent({ data }: HomepageContentProps) {
               <div className="flex justify-center mt-8">
                 <div className="glass-effect rounded-2xl p-6 max-w-4xl">
                   <Image
-                    src={aiChaosSection.chaosImage.asset.url}
+                    src={getOptimizedImageUrl(aiChaosSection.chaosImage.asset.url, 800, 600)}
                     alt={aiChaosSection.chaosImage.alt}
                     width={800}
                     height={600}
                     className="rounded-xl w-full h-auto"
+                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 80vw, 60vw"
                   />
                 </div>
               </div>

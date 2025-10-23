@@ -39,15 +39,15 @@ export async function sendEmailJS(
   try {
     // Initialize EmailJS if not already done or if config is provided
     if (!isInitialized || config) {
-      const publicKey = config?.publicKey || process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY || 'your_public_key';
+      const publicKey = config?.publicKey || process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY || '_IsGcqR5qSufMNDdM';
       emailjs.init(publicKey);
       isInitialized = true;
     }
 
-    const serviceId = config?.serviceId || process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID || 'your_service_id';
+    const serviceId = config?.serviceId || process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID || 'service_halss8z';
     
     // Use single template ID for all forms with conditional rendering
-    const templateId = config?.templateId || process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID || 'your_template_id';
+    const templateId = config?.templateId || process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID || 'template_gzgxcwp';
 
     const templateParams = {
       to_email: destinationEmail || emailData.to_email,
