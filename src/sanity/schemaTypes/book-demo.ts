@@ -135,6 +135,13 @@ export const bookDemo = defineType({
           type: 'string',
           validation: (Rule) => Rule.required(),
         }),
+        defineField({
+          name: 'email',
+          title: 'Destination Email',
+          type: 'string',
+          initialValue: 'barboroberto98@gmail.com',
+          validation: (Rule) => Rule.required().email(),
+        }),
       ],
     }),
   ],

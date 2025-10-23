@@ -1,7 +1,11 @@
 "use client";
 
+import { useState } from "react";
 import Link from "next/link";
 import { Globe, Calendar, MessageSquare } from "lucide-react";
+import { sendEmailJS, generateEmailTemplate } from "@/lib/emailjs";
+import { useContactEmail } from "@/hooks/use-contact-email";
+import { useEmailJSConfig } from "@/hooks/use-emailjs-config";
 
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
@@ -10,6 +14,73 @@ import { Label } from "@/components/ui/label";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 
 export default function Contact() {
+  const { data: destinationEmail } = useContactEmail();
+  const { data: emailjsConfig } = useEmailJSConfig();
+  const [formData, setFormData] = useState({
+    firstName: "",
+    lastName: "",
+    email: "",
+    role: "",
+    organization: "",
+    country: "",
+    organizationSize: "",
+    request: ""
+  });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitMessage, setSubmitMessage] = useState("");
+
+  const handleInputChange = (field: string, value: string) => {
+    setFormData(prev => ({ ...prev, [field]: value }));
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+    setSubmitMessage("");
+
+    try {
+      const htmlMessage = generateEmailTemplate(formData, 'Contact');
+      
+      const emailSent = await sendEmailJS({
+        to_email: destinationEmail || 'barboroberto98@gmail.com',
+        to_name: 'Roberto',
+        from_name: `${formData.firstName} ${formData.lastName}`,
+        from_email: formData.email,
+        subject: 'New Contact Form Submission - Loop AI Group',
+        message: htmlMessage,
+        form_type: 'Contact',
+        // Include all form data
+        firstName: formData.firstName,
+        lastName: formData.lastName,
+        role: formData.role,
+        organization: formData.organization,
+        country: formData.country,
+        organizationSize: formData.organizationSize,
+        request: formData.request,
+      }, destinationEmail, emailjsConfig);
+
+      if (emailSent) {
+        setSubmitMessage("Thank you! Your message has been sent successfully.");
+        setFormData({
+          firstName: "",
+          lastName: "",
+          email: "",
+          role: "",
+          organization: "",
+          country: "",
+          organizationSize: "",
+          request: ""
+        });
+      } else {
+        setSubmitMessage("Sorry, there was an error sending your message. Please try again.");
+      }
+    } catch (error) {
+      console.error('Form submission error:', error);
+      setSubmitMessage("Sorry, there was an error sending your message. Please try again.");
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
   return (
     <div className="min-h-screen bg-background">
       {/* Hero Section */}
@@ -36,7 +107,12 @@ export default function Contact() {
           <div className="max-w-2xl mx-auto">
             <Card className="glass-effect">
               <CardContent className="p-8">
-                <form className="space-y-6">
+                <form onSubmit={handleSubmit} className="space-y-6">
+                  {submitMessage && (
+                    <div className={`p-4 rounded-md ${submitMessage.includes('successfully') ? 'bg-green-100 text-green-800' : 'bg-red-100 text-red-800'}`}>
+                      {submitMessage}
+                    </div>
+                  )}
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div className="space-y-2">
                       <Label htmlFor="firstName" className="text-base font-medium">
@@ -44,6 +120,8 @@ export default function Contact() {
                       </Label>
                       <Input
                         id="firstName"
+                        value={formData.firstName}
+                        onChange={(e) => handleInputChange("firstName", e.target.value)}
                         placeholder="Enter your first name"
                         required
                         className="h-12 text-base border-2 border-primary/40 focus:border-primary focus:ring-2 focus:ring-primary/30"
@@ -55,6 +133,8 @@ export default function Contact() {
                       </Label>
                       <Input
                         id="lastName"
+                        value={formData.lastName}
+                        onChange={(e) => handleInputChange("lastName", e.target.value)}
                         placeholder="Enter your last name"
                         required
                         className="h-12 text-base border-2 border-primary/40 focus:border-primary focus:ring-2 focus:ring-primary/30"
@@ -69,6 +149,8 @@ export default function Contact() {
                     <Input
                       id="email"
                       type="email"
+                      value={formData.email}
+                      onChange={(e) => handleInputChange("email", e.target.value)}
                       placeholder="Enter your email address"
                       required
                       className="h-12 text-base border-2 border-primary/40 focus:border-primary focus:ring-2 focus:ring-primary/30"
@@ -81,6 +163,8 @@ export default function Contact() {
                     </Label>
                     <Input
                       id="role"
+                      value={formData.role}
+                      onChange={(e) => handleInputChange("role", e.target.value)}
                       placeholder="e.g., CTO, AI Director, VP of Technology"
                       required
                       className="h-12 text-base border-2 border-primary/40 focus:border-primary focus:ring-2 focus:ring-primary/30"
@@ -93,6 +177,8 @@ export default function Contact() {
                     </Label>
                     <Input
                       id="organization"
+                      value={formData.organization}
+                      onChange={(e) => handleInputChange("organization", e.target.value)}
                       placeholder="Enter your organization name"
                       required
                       className="h-12 text-base border-2 border-primary/40 focus:border-primary focus:ring-2 focus:ring-primary/30"
@@ -105,6 +191,8 @@ export default function Contact() {
                     </Label>
                     <Input
                       id="country"
+                      value={formData.country}
+                      onChange={(e) => handleInputChange("country", e.target.value)}
                       placeholder="Enter your country"
                       required
                       className="h-12 text-base border-2 border-primary/40 focus:border-primary focus:ring-2 focus:ring-primary/30"
@@ -115,7 +203,7 @@ export default function Contact() {
                     <Label htmlFor="organizationSize" className="text-base font-medium">
                       Organization Size <span className="text-red-500">*</span>
                     </Label>
-                    <Select required>
+                    <Select value={formData.organizationSize} onValueChange={(value) => handleInputChange("organizationSize", value)} required>
                       <SelectTrigger className="h-12 text-base border-2 border-primary/40 focus:border-primary focus:ring-2 focus:ring-primary/30">
                         <SelectValue placeholder="Select Size" />
                       </SelectTrigger>
@@ -136,6 +224,8 @@ export default function Contact() {
                     </Label>
                     <textarea
                       id="request"
+                      value={formData.request}
+                      onChange={(e) => handleInputChange("request", e.target.value)}
                       required
                       rows={4}
                       placeholder="Describe your request..."
@@ -143,9 +233,9 @@ export default function Contact() {
                     />
                   </div>
 
-                  <Button type="submit" size="lg" className="w-full h-12 text-lg">
+                  <Button type="submit" size="lg" className="w-full h-12 text-lg" disabled={isSubmitting}>
                     <MessageSquare className="mr-2 h-5 w-5" />
-                    Submit Contact Request
+                    {isSubmitting ? "Sending..." : "Submit Contact Request"}
                   </Button>
                 </form>
               </CardContent>

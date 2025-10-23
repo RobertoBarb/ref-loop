@@ -2,6 +2,9 @@
 
 import { useState } from "react";
 import { Calendar, Send } from "lucide-react";
+import { sendEmailJS, generateEmailTemplate } from "@/lib/emailjs";
+import { useBookDemoEmail } from "@/hooks/use-book-demo-email";
+import { useEmailJSConfig } from "@/hooks/use-emailjs-config";
 
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
@@ -11,6 +14,8 @@ import { Label } from "@/components/ui/label";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 
 export default function BookDemo() {
+  const { data: destinationEmail } = useBookDemoEmail();
+  const { data: emailjsConfig } = useEmailJSConfig();
   const [formData, setFormData] = useState({
     firstName: "",
     lastName: "",
@@ -21,15 +26,60 @@ export default function BookDemo() {
     organizationSize: "",
     challenges: ""
   });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitMessage, setSubmitMessage] = useState("");
 
   const handleInputChange = (field: string, value: string) => {
     setFormData(prev => ({ ...prev, [field]: value }));
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // Handle form submission here
-    console.log("Form submitted:", formData);
+    setIsSubmitting(true);
+    setSubmitMessage("");
+
+    try {
+      const htmlMessage = generateEmailTemplate(formData, 'Book Demo');
+      
+      const emailSent = await sendEmailJS({
+        to_email: destinationEmail || 'barboroberto98@gmail.com',
+        to_name: 'Roberto',
+        from_name: `${formData.firstName} ${formData.lastName}`,
+        from_email: formData.email,
+        subject: 'New Demo Request - Loop AI Group',
+        message: htmlMessage,
+        form_type: 'Book Demo',
+        // Include all form data
+        firstName: formData.firstName,
+        lastName: formData.lastName,
+        role: formData.role,
+        organization: formData.organization,
+        country: formData.country,
+        organizationSize: formData.organizationSize,
+        challenges: formData.challenges,
+      }, destinationEmail, emailjsConfig);
+
+      if (emailSent) {
+        setSubmitMessage("Thank you! Your demo request has been submitted successfully.");
+        setFormData({
+          firstName: "",
+          lastName: "",
+          email: "",
+          role: "",
+          organization: "",
+          country: "",
+          organizationSize: "",
+          challenges: ""
+        });
+      } else {
+        setSubmitMessage("Sorry, there was an error submitting your demo request. Please try again.");
+      }
+    } catch (error) {
+      console.error('Form submission error:', error);
+      setSubmitMessage("Sorry, there was an error submitting your demo request. Please try again.");
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -59,6 +109,11 @@ export default function BookDemo() {
             <Card className="glass-effect">
               <CardContent className="p-8">
                 <form onSubmit={handleSubmit} className="space-y-6">
+                  {submitMessage && (
+                    <div className={`p-4 rounded-md ${submitMessage.includes('successfully') ? 'bg-green-100 text-green-800' : 'bg-red-100 text-red-800'}`}>
+                      {submitMessage}
+                    </div>
+                  )}
                   {/* First Name and Last Name */}
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div className="space-y-2">
@@ -191,9 +246,9 @@ export default function BookDemo() {
                   </div>
 
                   {/* Submit Button */}
-                  <Button type="submit" size="lg" className="w-full h-12 text-lg">
+                  <Button type="submit" size="lg" className="w-full h-12 text-lg" disabled={isSubmitting}>
                     <Send className="mr-2 h-5 w-5" />
-                    Request a Demo
+                    {isSubmitting ? "Submitting..." : "Request a Demo"}
                   </Button>
                 </form>
               </CardContent>

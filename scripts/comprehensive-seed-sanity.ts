@@ -130,6 +130,11 @@ async function createHomepageData() {
     footer: {
       companyName: 'Loop AI Group',
       copyrightText: '© 2024 Loop AI Group and its affiliates. All Rights Reserved.',
+      legalInfo: {
+        legalAddress: 'Legal Address: xxxxx, xxxxx - xxxxx (xxxxx)',
+        vatNumber: 'VAT: xxxxx',
+        registrationNumber: 'Registration Number: xxxxx'
+      }
     },
   };
 }
@@ -559,6 +564,7 @@ function createContactData() {
           placeholder: 'Describe your request...',
         },
       ],
+      email: 'barboroberto98@gmail.com',
     },
     locations: {
       title: 'Locations',
@@ -667,6 +673,7 @@ function createCareersData() {
           ],
         },
       ],
+      email: 'barboroberto98@gmail.com',
     },
   };
 }
@@ -1752,7 +1759,19 @@ function createBookDemoData() {
         },
       ],
       submitButtonText: 'Request a Demo',
+      email: 'barboroberto98@gmail.com',
     },
+  };
+}
+
+// EmailJS Configuration data
+function createEmailJSConfigData() {
+  return {
+    _type: 'emailjsConfig',
+    title: 'EmailJS Configuration',
+    serviceId: 'your_service_id',
+    templateId: 'template_unified_conditional',
+    publicKey: 'your_public_key',
   };
 }
 
@@ -1762,7 +1781,7 @@ async function seedAllContent() {
     console.log('🚀 Starting comprehensive Sanity seeding...');
     
     // Check for existing documents first
-    const existingDocs = await client.fetch('*[_type in ["homepage", "aboutUs", "team", "teamMember", "successCases", "successCase", "loopAiAgentsOrchestra", "loopQ", "platformFacts", "bookDemo", "contact", "careers", "videos", "mediaAnalystRelations", "loopAiResearch"]]');
+    const existingDocs = await client.fetch('*[_type in ["homepage", "aboutUs", "team", "teamMember", "successCases", "successCase", "loopAiAgentsOrchestra", "loopQ", "platformFacts", "bookDemo", "contact", "careers", "videos", "mediaAnalystRelations", "loopAiResearch", "emailjsConfig"]]');
     
     if (existingDocs.length > 0) {
       console.log('⚠️  Found existing documents in Sanity. Deleting them first...');
@@ -1809,6 +1828,7 @@ async function seedAllContent() {
       { name: 'Videos', data: createVideosData() },
       { name: 'Media & Analyst Relations', data: createMediaAnalystRelationsData() },
       { name: 'Loop AI Research', data: await createLoopAIResearchData() },
+      { name: 'EmailJS Configuration', data: createEmailJSConfigData() },
     ];
 
     for (const doc of documents) {

@@ -154,6 +154,13 @@ export const careers = defineType({
           ],
           validation: (Rule) => Rule.required().min(1),
         }),
+        defineField({
+          name: 'email',
+          title: 'Destination Email',
+          type: 'string',
+          initialValue: 'barboroberto98@gmail.com',
+          validation: (Rule) => Rule.required().email(),
+        }),
       ],
     }),
   ],

@@ -12,6 +12,11 @@ export interface FooterData {
   }
   companyName: string
   copyrightText: string
+  legalInfo?: {
+    legalAddress: string
+    vatNumber: string
+    registrationNumber: string
+  }
 }
 
 export function useFooter() {
