@@ -31,6 +31,11 @@ async function uploadImage(fileName: string, alt: string) {
       // Add performance optimizations
       extract: ['blurhash', 'palette', 'exif', 'location'],
       preserveFilename: false,
+      // Maintain high quality for images
+      metadata: {
+        hasAlpha: true,
+        isOpaque: false,
+      },
     });
 
     console.log(`✅ Image uploaded successfully: ${asset._id}`);
@@ -66,6 +71,37 @@ async function uploadPDF(fileName: string) {
     };
   } catch (error) {
     console.error(`❌ Error uploading PDF ${fileName}:`, error);
+    return null;
+  }
+}
+
+// Funzione per caricare immagini dalla cartella public
+async function uploadImageFromPublic(fileName: string, alt: string) {
+  try {
+    const filePath = join(process.cwd(), 'public', fileName);
+    console.log(`📤 Uploading image: ${fileName} from ${filePath}`);
+    
+    const asset = await client.assets.upload('image', createReadStream(filePath), {
+      filename: fileName,
+      // Add performance optimizations
+      extract: ['blurhash', 'palette', 'exif', 'location'],
+      preserveFilename: false,
+      // Maintain high quality for images
+      metadata: {
+        hasAlpha: true,
+        isOpaque: false,
+      },
+    });
+
+    console.log(`✅ Image uploaded successfully: ${asset._id}`);
+
+    return {
+      _type: 'image',
+      asset: { _type: 'reference', _ref: asset._id },
+      alt,
+    };
+  } catch (error) {
+    console.error(`❌ Error uploading image ${fileName}:`, error);
     return null;
   }
 }
@@ -1788,7 +1824,8 @@ function createEmailJSConfigData() {
 async function createFooterData() {
   console.log('🖼️ Uploading footer logo...');
   
-  const footerLogo = await uploadImage('loopai_Group_Logo_2022.avif', 'Loop AI Group Logo');
+  // Upload footer logo from public/ directory
+  const footerLogo = await uploadImageFromPublic('loopai_Group_Logo_2022.avif', 'Loop AI Group Logo');
   
   return {
     _type: 'footer',

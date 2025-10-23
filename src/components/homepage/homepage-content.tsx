@@ -77,12 +77,13 @@ export function HomepageContent({ data }: HomepageContentProps) {
                   <div className="aspect-square bg-gradient-to-br from-primary/20 to-accent/20 rounded-xl flex items-center justify-center overflow-hidden">
                     {heroSection.heroImage ? (
                       <Image 
-                        src={getOptimizedImageUrl(heroSection.heroImage.asset.url, 400, 400)} 
+                        src={getOptimizedImageUrl(heroSection.heroImage.asset.url, 800, 800)} 
                         alt={heroSection.heroImage.alt} 
                         fill
                         className="object-cover rounded-xl"
                         priority
                         sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                        quality={95}
                       />
                     ) : (
                       <Image 

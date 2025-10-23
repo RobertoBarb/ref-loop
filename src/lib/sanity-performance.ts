@@ -4,8 +4,8 @@ export const SANITY_PERFORMANCE_CONFIG = {
   imageOptimization: {
     // Enable WebP conversion for better performance
     auto: 'format',
-    // Set quality for different environments
-    quality: process.env.NODE_ENV === 'production' ? 85 : 75,
+    // Set quality for different environments - higher quality for important images
+    quality: process.env.NODE_ENV === 'production' ? 90 : 85,
     // Enable responsive images
     responsive: true,
   },
@@ -58,11 +58,18 @@ export function getOptimizedImageUrl(url: string, width?: number, height?: numbe
   if (width) params.set('w', width.toString())
   if (height) params.set('h', height.toString())
   
-  // Add quality parameter
-  params.set('q', SANITY_PERFORMANCE_CONFIG.imageOptimization.quality.toString())
+  // Add quality parameter - use higher quality for important images
+  const quality = width && width > 800 ? 95 : SANITY_PERFORMANCE_CONFIG.imageOptimization.quality
+  params.set('q', quality.toString())
   
   // Add format parameter
   params.set('auto', SANITY_PERFORMANCE_CONFIG.imageOptimization.auto)
+  
+  // For high-quality images, disable compression
+  if (width && width > 800) {
+    params.set('fit', 'max')
+    params.set('dpr', '1')
+  }
   
   const separator = url.includes('?') ? '&' : '?'
   return `${url}${separator}${params.toString()}`
