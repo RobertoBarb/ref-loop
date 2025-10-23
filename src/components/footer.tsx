@@ -12,6 +12,11 @@ export function Footer() {
     companyName: "Loop AI Group",
     copyrightText: `© ${new Date().getFullYear()} Loop AI Group and its affiliates. All Rights Reserved.`,
     logo: undefined,
+    legalInfo: {
+      legalAddress: "Legal Address: xxxxx, xxxxx - xxxxx (xxxxx)",
+      vatNumber: "VAT: xxxxx",
+      registrationNumber: "Registration Number: xxxxx"
+    }
   };
 
   const finalFooterData = footerData || defaultData;
@@ -43,6 +48,15 @@ export function Footer() {
           <p className="text-sm text-muted-foreground">
             {finalFooterData.copyrightText}
           </p>
+          
+          {/* Company Legal Information */}
+          <div className="p-2 bg-muted/30 rounded-lg max-w-2xl">
+            <div className="text-sm text-muted-foreground space-y-1">
+              <p>{finalFooterData.legalInfo?.legalAddress || defaultData.legalInfo.legalAddress}</p>
+              <p>{finalFooterData.legalInfo?.vatNumber || defaultData.legalInfo.vatNumber}</p>
+              <p>{finalFooterData.legalInfo?.registrationNumber || defaultData.legalInfo.registrationNumber}</p>
+            </div>
+          </div>
           
           {/* Additional footer links */}
           <div className="flex flex-wrap justify-center gap-6 mt-4">

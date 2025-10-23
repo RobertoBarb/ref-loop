@@ -2,11 +2,12 @@
 
 import Link from "next/link";
 import Image from "next/image";
-import { ArrowRight, Bot, Brain, Cloud, Database, Globe, Play, Sparkles, Zap } from "lucide-react";
+import { Bot, Brain, Cloud, Database, Globe, Sparkles, Zap } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { type HomepageData } from "@/hooks/use-homepage";
+import { getOptimizedImageUrl } from "@/lib/sanity-performance";
 
 // Icon mapping per le icone Lucide
 const iconMap = {
@@ -16,8 +17,6 @@ const iconMap = {
   Sparkles,
   Bot,
   Globe,
-  Play,
-  ArrowRight,
   Zap,
 } as const;
 
@@ -26,7 +25,7 @@ interface HomepageContentProps {
 }
 
 export function HomepageContent({ data }: HomepageContentProps) {
-  const { heroSection, aiChaosSection, enterpriseControlCenter, videoSection, ctaSection, footer } = data;
+  const { heroSection, aiChaosSection, enterpriseControlCenter, videoSection, ctaSection } = data;
 
   // Funzione per applicare il gradiente a "AI Agents" e "AI Chaos" nei titoli
   const formatTitleWithGradient = (title: string) => {
@@ -70,30 +69,6 @@ export function HomepageContent({ data }: HomepageContentProps) {
                 </p>
               </div>
               
-              <div className="flex flex-col sm:flex-row gap-4">
-                {(heroSection.primaryButton ?? {
-                  text: 'Book a Demo',
-                  link: '/cognitive-platforms/book-demo',
-                }) && (
-                  <Button size="lg" className="pulse-glow" asChild>
-                    <Link href={heroSection.primaryButton?.link ?? '/cognitive-platforms/book-demo'}>
-                      <Play className="mr-2 h-5 w-5" />
-                      {heroSection.primaryButton?.text ?? 'Book a Demo'}
-                    </Link>
-                  </Button>
-                )}
-                {(heroSection.secondaryButton ?? {
-                  text: 'Learn More',
-                  link: '/cognitive-platforms/loop-ai-agents-orchestra',
-                }) && (
-                  <Button variant="outline" size="lg" asChild>
-                    <Link href={heroSection.secondaryButton?.link ?? '/cognitive-platforms/loop-ai-agents-orchestra'}>
-                      {heroSection.secondaryButton?.text ?? 'Learn More'}
-                      <ArrowRight className="ml-2 h-4 w-4" />
-                    </Link>
-                  </Button>
-                )}
-              </div>
             </div>
             
             <div className="relative">
@@ -102,10 +77,12 @@ export function HomepageContent({ data }: HomepageContentProps) {
                   <div className="aspect-square bg-gradient-to-br from-primary/20 to-accent/20 rounded-xl flex items-center justify-center overflow-hidden">
                     {heroSection.heroImage ? (
                       <Image 
-                        src={heroSection.heroImage.asset.url} 
+                        src={getOptimizedImageUrl(heroSection.heroImage.asset.url, 400, 400)} 
                         alt={heroSection.heroImage.alt} 
                         fill
                         className="object-cover rounded-xl"
+                        priority
+                        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                       />
                     ) : (
                       <Image 
@@ -143,11 +120,12 @@ export function HomepageContent({ data }: HomepageContentProps) {
               <div className="flex justify-center mt-8">
                 <div className="glass-effect rounded-2xl p-6 max-w-4xl">
                   <Image
-                    src={aiChaosSection.chaosImage.asset.url}
+                    src={getOptimizedImageUrl(aiChaosSection.chaosImage.asset.url, 800, 600)}
                     alt={aiChaosSection.chaosImage.alt}
                     width={800}
                     height={600}
                     className="rounded-xl w-full h-auto"
+                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 80vw, 60vw"
                   />
                 </div>
               </div>
